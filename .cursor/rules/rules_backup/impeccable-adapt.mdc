@@ -1,0 +1,91 @@
+---
+description: Impeccable adapt rules for flexible and resilient UI
+alwaysApply: true
+---
+
+# Impeccable Adapt Rules
+
+UI must adapt to different contexts: screen size, content, and state.
+
+---
+
+## Core Principle
+
+UI should never break.
+
+It should gracefully adapt to any situation.
+
+---
+
+## Responsive Design
+
+- Use mobile-first approach
+- Use responsive layouts:
+  - `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+- Ensure usability on all screen sizes
+
+---
+
+## Content Awareness
+
+- Handle:
+  - long text
+  - short text
+  - missing data
+- Use:
+  - `truncate`
+  - `line-clamp`
+- Avoid overflow
+
+---
+
+## State Awareness
+
+- Handle all states:
+  - loading
+  - empty
+  - error
+- Provide clear feedback
+
+---
+
+## Progressive Enhancement
+
+- Start simple
+- Add enhancements for larger screens or better devices
+
+---
+
+## Graceful Degradation
+
+- If something fails:
+  - image → fallback
+  - data → empty state
+- UI must remain usable
+
+---
+
+## Flexible Layout
+
+- Avoid fixed sizes when possible
+- Use fluid layouts
+- Avoid layout breaking
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Maintain readability
+- Keep UI simple and robust
+
+---
+
+## Goal
+
+The UI should feel:
+
+- flexible
+- resilient
+- reliable
+- adaptive

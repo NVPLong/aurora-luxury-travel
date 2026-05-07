@@ -1,0 +1,475 @@
+---
+description: Complete Impeccable-inspired design system for Travel Website
+alwaysApply: true
+---
+
+# Impeccable Design System
+
+This project follows an Impeccable-inspired UI workflow for a modern Vietnamese travel website.
+
+The goal is not to make the UI flashy.  
+The goal is to make it clear, refined, fast, resilient, and easy to use.
+
+## Project Context
+
+This is a travel website for learning and portfolio purposes.
+
+The UI should feel:
+
+- clean
+- premium
+- image-driven
+- calm
+- trustworthy
+- easy to scan
+- beginner-friendly in code
+
+Use Vietnamese comments for important logic.
+
+## Core Constraints
+
+- Do not change routes unless asked
+- Do not remove search, filter, or sort
+- Do not change business logic unless asked
+- Do not invent unnecessary features
+- Prefer Tailwind CSS
+- Keep code readable for a first-year Computer Science student
+- Preserve existing data structure unless change is required
+- Always handle responsive behavior
+
+## Recommended Workflow
+
+When redesigning or improving UI, follow this order:
+
+1. Shape
+2. Clarify
+3. Distill
+4. Layout
+5. Typeset
+6. Colorize
+7. Bolder / Quieter
+8. Craft
+9. Animate
+10. Delight
+11. Adapt
+12. Harden
+13. Optimize
+14. Polish
+15. Audit
+16. Critique
+17. Document
+18. Extract
+19. Live
+20. Teach
+
+## 1. Shape
+
+Before coding, understand the UI task.
+
+Ask:
+
+- What is this screen or component for?
+- Who is using it?
+- What action should the user take?
+- What content is shown?
+- What can be missing, long, short, or dynamic?
+- What feeling should the UI create?
+
+For this travel website, prefer:
+
+- inspiring
+- clear
+- calm
+- premium
+- friendly
+
+## 2. Clarify
+
+The user should never have to guess.
+
+- Use clear labels
+- Make actions obvious
+- Avoid vague wording like "More", "Options", "Click here"
+- Use clear empty, loading, and error states
+- Group related content logically
+
+Good examples:
+
+- "Xem chi tiết địa điểm"
+- "Lọc theo ngân sách"
+- "Không tìm thấy địa điểm phù hợp"
+
+## 3. Distill
+
+Less, but better.
+
+- Remove unnecessary labels
+- Remove duplicated information
+- Shorten long text
+- Keep only what helps the user decide
+- Each section should have one main purpose
+
+Avoid clutter.
+
+## 4. Layout
+
+The layout should breathe.
+
+Use:
+
+- `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+- `py-16`, `py-20`, `gap-6`, `gap-8`
+- `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+
+Rules:
+
+- Group related elements closer together
+- Separate unrelated sections with more space
+- Avoid random spacing
+- The user should know where to look first within 2 seconds
+
+## 5. Typeset
+
+Text must be readable and scannable.
+
+Use:
+
+- Page title: `text-4xl md:text-5xl font-bold text-slate-900`
+- Section title: `text-3xl md:text-4xl font-bold text-slate-900`
+- Card title: `text-xl font-semibold text-slate-900`
+- Body: `text-slate-600 leading-relaxed`
+- Meta: `text-slate-500`
+
+Rules:
+
+- Avoid long paragraphs
+- Use `max-w-2xl` or `max-w-3xl` for long text
+- Prefer `text-left` for body content
+- Use short paragraphs and bullet points when helpful
+
+## 6. Colorize
+
+Color organizes information. It is not decoration.
+
+Use neutral colors first:
+
+- Background: `bg-slate-50` or `bg-sky-50`
+- Card: `bg-white`
+- Main text: `text-slate-900`
+- Body text: `text-slate-600`
+- Muted text: `text-slate-500`
+
+Use one primary color:
+
+- `sky`
+- `cyan`
+- `teal`
+
+Use one accent color for CTA:
+
+- `amber`
+- `orange`
+
+Rules:
+
+- Do not create rainbow UI
+- Same color should mean same thing
+- CTA color should be used sparingly
+- Text must have strong contrast
+
+## 7. Bolder and Quieter
+
+Use both intentionally.
+
+Bolder means making important things clearer:
+
+- bigger title
+- stronger contrast
+- clearer CTA
+- more spacing around important actions
+
+Quieter means reducing noise:
+
+- mute secondary text
+- reduce unnecessary borders
+- reduce excessive shadows
+- remove unnecessary icons
+
+Rule:
+
+Only the important thing should stand out.  
+Everything else should support it quietly.
+
+## 8. Craft
+
+Craft is precision and refinement.
+
+Check:
+
+- spacing
+- alignment
+- icon sizes
+- text hierarchy
+- card consistency
+- image cropping
+- hover states
+
+Avoid random values.
+
+Use consistent patterns:
+
+- Cards: `rounded-2xl` or `rounded-3xl`
+- Shadows: `shadow-sm`, `shadow-md`, `hover:shadow-lg`
+- Transitions: `transition-all duration-300 ease-out`
+
+## 9. Animate
+
+Animation must support clarity, not decoration.
+
+Good motion:
+
+- `transition-all duration-300 ease-out`
+- `hover:-translate-y-1`
+- `hover:shadow-lg`
+- fade + small translate for entry
+
+Avoid:
+
+- bounce
+- spin
+- aggressive zoom
+- animating everything
+
+Use transform and opacity when possible.
+
+## 10. Delight
+
+Delight should be subtle, useful, and non-disruptive.
+
+Good delight:
+
+- smooth hover feedback
+- helpful empty states
+- skeleton loading
+- clear input focus
+
+Bad delight:
+
+- surprise popups
+- loud animation
+- unnecessary delay
+- distracting effects
+
+## 11. Adapt
+
+UI must adapt to screen size, content, and state.
+
+Handle:
+
+- mobile
+- tablet
+- desktop
+- long text
+- missing image
+- empty result
+- loading state
+- error state
+
+Use:
+
+- `line-clamp-2`
+- `truncate`
+- responsive grids
+- image fallback
+- empty states
+
+## 12. Harden
+
+Assume things will fail.
+
+Always handle:
+
+- loading
+- success
+- empty
+- error
+
+Rules:
+
+- No broken image icons
+- No blank page
+- No overflowing text
+- No layout breaking on mobile
+- No crash from missing data
+
+Reliability beats fancy UI.
+
+## 13. Optimize
+
+Performance is part of UX.
+
+Rules:
+
+- Use `next/image` when possible
+- Use correct image sizes
+- Lazy load when appropriate
+- Avoid heavy animations
+- Avoid unnecessary libraries
+- Avoid unnecessary re-renders
+- Prefer transform and opacity for animation
+
+The UI should feel fast and responsive.
+
+## 14. Polish
+
+Polish means fixing small rough edges.
+
+Check:
+
+- spacing feels balanced
+- hover feels smooth
+- buttons align well
+- cards look consistent
+- text hierarchy is clear
+- images crop well
+- mobile layout feels natural
+
+If something feels slightly off, refine it.
+
+## 15. Audit
+
+Review the UI like a first-time user.
+
+Check:
+
+- Is the page clear within 2 seconds?
+- Is the primary action obvious?
+- Is the layout overwhelming?
+- Is text readable?
+- Is search/filter easy to use?
+- Does mobile work well?
+- Are empty states helpful?
+- Are images reliable?
+
+Find friction and fix it.
+
+## 16. Critique
+
+Give specific, actionable feedback.
+
+Use this format:
+
+- Issue:
+- Why it matters:
+- Suggestion:
+
+Avoid vague feedback like:
+
+- "looks good"
+- "make it nicer"
+- "modernize it"
+
+Focus on clarity, hierarchy, spacing, visual weight, interaction, and consistency.
+
+## 17. Document
+
+When creating a reusable UI pattern, document the decision.
+
+Examples:
+
+- Card pattern
+- Button style
+- Layout container
+- Color usage
+- Empty state style
+
+Keep documentation practical and short.
+
+## 18. Extract
+
+If a UI pattern repeats, extract it.
+
+Examples:
+
+- `Container`
+- `SectionHeader`
+- `Button`
+- `DestinationCard`
+- `EmptyState`
+
+Avoid copy-pasting repeated UI.
+
+Do not over-engineer.  
+Extract only when reuse is clear.
+
+## 19. Live
+
+Design must work in real usage.
+
+Before considering UI done:
+
+- test locally
+- test mobile view
+- test real browser
+- test slow network if possible
+- deploy early
+- gather feedback
+
+Real usage reveals the truth.
+
+## 20. Teach
+
+Make the code and system understandable.
+
+Rules:
+
+- Use clear component names
+- Add Vietnamese comments for important logic
+- Avoid clever code
+- Prefer readable structure
+- Use examples when documenting patterns
+
+If the system cannot be explained, it cannot be maintained.
+
+## Travel Website UI Direction
+
+For this project:
+
+- Light theme
+- Spacious layout
+- Strong travel imagery
+- Clean cards
+- Clear search and filters
+- Friendly Vietnamese content
+- Premium but not overly complex
+
+Recommended card style:
+
+- `bg-white`
+- `rounded-2xl`
+- `shadow-sm hover:shadow-lg`
+- `transition-all duration-300 ease-out`
+- `hover:-translate-y-1`
+- image with `aspect-video object-cover`
+- title in `text-slate-900`
+- meta in `text-slate-500`
+- description in `text-slate-600`
+
+Recommended button style:
+
+- Primary CTA: `bg-amber-500 hover:bg-amber-600 text-white`
+- Secondary: `bg-white border border-slate-200 text-slate-700`
+- Rounded: `rounded-full` or `rounded-xl`
+- Touch-friendly padding
+
+## Final Rule
+
+Do not make the UI more decorative.
+
+Make it:
+
+- clearer
+- simpler
+- more intentional
+- more resilient
+- more polished

@@ -1,0 +1,98 @@
+/* =============================================================
+   app/globals.css
+   CSS toàn cục cho toàn bộ project.
+   @tailwind directives kích hoạt Tailwind CSS.
+   ============================================================= */
+
+/* 3 dòng này là bắt buộc để Tailwind hoạt động */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Import font từ Google Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* === Base styles – áp dụng cho toàn bộ trang === */
+@layer base {
+
+  /* Đặt màu nền và font mặc định */
+  body {
+    /* Aurora luxury – light theme nền kem */
+    @apply bg-[color:#F7F3EC] text-slate-900 font-sans;
+    /* Chữ đẹp hơn trên mọi trình duyệt */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar tùy chỉnh (chỉ hoạt động trên Chrome/Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[color:#F7F3EC];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[color:#C8A96A];
+  }
+
+  /* Bỏ highlight màu xanh khi tap trên mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* === Utility classes tùy chỉnh === */
+@layer utilities {
+
+  /* Giới hạn text nhiều dòng (Tailwind v3 có sẵn line-clamp) */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[color:#C8A96A] to-[color:#5F7F78] bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-slate-200/70;
+  }
+
+  /* ===========================================================
+     Aurora layered backgrounds & surfaces (quiet luxury)
+     - dùng để thay các mảng nền tối, tạo cảm giác airy/premium
+     - hạn chế dùng quá dày đặc để tránh blur stacking nặng
+     =========================================================== */
+  .aurora-section-bg {
+    background:
+      radial-gradient(circle at top left, rgba(200, 169, 106, 0.18), transparent 32%),
+      linear-gradient(180deg, #F7F3EC, #F8FAF7);
+  }
+
+  .aurora-surface {
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 2rem;
+    box-shadow: 0 24px 80px rgba(31, 41, 51, 0.08);
+    backdrop-filter: blur(24px);
+  }
+
+  .aurora-surface-subtle {
+    background-color: rgba(255, 255, 255, 0.60);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 60px rgba(31, 41, 51, 0.06);
+    backdrop-filter: blur(16px);
+  }
+}

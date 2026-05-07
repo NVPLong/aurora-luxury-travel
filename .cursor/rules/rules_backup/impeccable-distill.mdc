@@ -1,0 +1,83 @@
+---
+description: Impeccable distill rules for simplifying UI and content
+alwaysApply: true
+---
+
+# Impeccable Distill Rules
+
+Distill means removing unnecessary elements and focusing on what matters most.
+
+---
+
+## Core Principle
+
+Less, but better.
+
+If something does not help the user → remove it.
+
+---
+
+## Remove Unnecessary
+
+- Remove:
+  - redundant text
+  - extra labels
+  - unnecessary icons
+  - duplicated information
+- Avoid clutter
+
+---
+
+## Prioritize Core Information
+
+- Each screen should have a clear main purpose
+- Highlight only the most important content
+
+---
+
+## Simplify Content
+
+- Use shorter text
+- Avoid long explanations
+- Use concise language
+
+---
+
+## Reduce Duplication
+
+- Do not repeat the same information
+- Keep content clean and minimal
+
+---
+
+## Simplify Layout
+
+- Reduce number of elements
+- Avoid complex UI structures
+- Keep layout easy to scan
+
+---
+
+## Clarity Through Reduction
+
+- Removing elements should improve clarity
+- Do not remove essential information
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Maintain usability
+- Keep UI readable and clear
+
+---
+
+## Goal
+
+The UI should feel:
+
+- simple
+- clean
+- focused
+- efficient

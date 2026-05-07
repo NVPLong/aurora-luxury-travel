@@ -1,0 +1,147 @@
+---
+description: Impeccable-style discovery and UI shaping rules
+alwaysApply: true
+---
+
+# Impeccable Shape Rules
+
+Before designing or coding UI, think first. Do not jump directly into JSX or Tailwind.
+
+## Core Principle
+
+Every UI task must start from a short design brief.
+
+The brief is a compass, not a rigid spec. It captures intent, user context, content, feeling, and constraints before implementation.
+
+## Required Design Brief
+
+Before modifying UI, identify:
+
+### Purpose
+
+- What is this screen/component for?
+- What user problem does it solve?
+- What action should the user take?
+
+### User
+
+- Who is using this?
+- Are they browsing casually, comparing options, or trying to decide quickly?
+- Are they on mobile, desktop, or both?
+
+### Content
+
+- What data is displayed?
+- What content can be long, short, missing, or dynamic?
+- What empty/loading/error states are needed?
+
+### Feeling
+
+- What should the UI feel like?
+- For this travel website, prefer:
+  - calm
+  - trustworthy
+  - premium
+  - inspiring
+  - easy to scan
+
+### Constraints
+
+- Mobile-first
+- Accessible contrast
+- No broken images
+- No dark patterns
+- Vietnamese content support
+- Keep logic simple and readable for a first-year CS student
+
+## Travel Website Design Direction
+
+This project is a Vietnamese travel website.
+
+The UI should feel like a curated modern travel site:
+
+- image-driven
+- clean
+- spacious
+- premium but friendly
+- easy to scan
+- not cluttered
+- not overly dark
+
+## Visual System
+
+### Layout
+
+- Use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+- Use generous spacing: `py-16`, `py-20`, `gap-6`, `gap-8`
+- Prefer clear section separation
+- Use mobile-first responsive design
+
+### Colors
+
+- Background: `bg-slate-50`, `bg-sky-50`, or soft gradient
+- Card: `bg-white`
+- Main text: `text-slate-900`
+- Secondary text: `text-slate-600`
+- Muted text: `text-slate-500`
+- Primary: `sky-500`, `cyan-500`, `teal-500`
+- CTA/accent: `amber-500`, `orange-500`
+
+### Cards
+
+- Use `rounded-2xl` or `rounded-3xl`
+- Use `shadow-sm`, `shadow-md`, `hover:shadow-lg`
+- Use `transition-all duration-300`
+- Use subtle hover only: `hover:-translate-y-1`
+- Keep hierarchy clear:
+  - image
+  - title
+  - location/meta
+  - short description
+  - CTA
+
+### Images
+
+- Images are central to the travel experience.
+- Use `object-cover`
+- Use `aspect-video`, `h-56`, or `h-64`
+- Avoid broken image icons
+- Add fallback UI when image fails
+- Prefer bright, realistic travel photos
+
+### Typography
+
+- Page titles: large, bold, easy to scan
+- Section headings: `text-3xl md:text-4xl font-bold`
+- Card titles: `font-semibold text-slate-900`
+- Body text: `text-slate-600`
+- Meta text: `text-slate-500`
+- Avoid dense paragraphs
+
+### Interaction
+
+- Use subtle transitions
+- Avoid aggressive animations
+- Hover states should feel smooth and polished
+- Buttons should be clear and touch-friendly
+
+## Implementation Constraints
+
+- Do not change routes unless asked
+- Do not remove search/filter/sort
+- Do not change business logic unless asked
+- Do not invent new data structure unless needed
+- Prefer Tailwind CSS
+- Keep Vietnamese comments for important logic
+- Keep code understandable for a beginner
+
+## Workflow
+
+When asked to redesign a component or page:
+
+1. Read this rule.
+2. Briefly infer the design brief.
+3. Modify UI only.
+4. Preserve existing logic.
+5. Check responsive behavior.
+6. Ensure images and empty states are handled.

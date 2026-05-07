@@ -1,0 +1,87 @@
+---
+description: Impeccable teaching rules for design system clarity
+alwaysApply: true
+---
+
+# Impeccable Teach Rules
+
+Teach means making the design system understandable and usable by others.
+
+---
+
+## Core Principle
+
+If it cannot be explained clearly, it cannot be applied consistently.
+
+---
+
+## Clarity
+
+- Use simple and clear language
+- Avoid vague instructions
+- Be explicit
+
+---
+
+## Actionable Rules
+
+- Every rule should be usable directly
+- Avoid abstract advice
+- Provide concrete instructions
+
+---
+
+## Examples
+
+- Always include examples:
+  - good vs bad
+  - before vs after
+- Show how to apply rules in code
+
+---
+
+## Repeat Patterns
+
+- Reinforce key patterns:
+  - spacing
+  - card design
+  - typography
+- Consistency improves learning
+
+---
+
+## Reduce Ambiguity
+
+- Avoid unclear terms like:
+  - "better"
+  - "nicer"
+  - "modern"
+- Explain what exactly to change
+
+---
+
+## Teach Through Doing
+
+- Prefer:
+  - code examples
+  - real UI examples
+- Avoid pure theory
+
+---
+
+## Constraints
+
+- Keep documentation simple
+- Keep rules practical
+- Maintain clarity
+
+---
+
+## Goal
+
+The system should be:
+
+- understandable
+- actionable
+- reusable
+- teachable

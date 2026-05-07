@@ -1,0 +1,97 @@
+---
+description: Impeccable core principles for UI quality
+alwaysApply: true
+---
+
+# Impeccable Core Rules
+
+This defines the quality standard for all UI.
+
+Impeccable is not about decoration.
+It is about clarity, intention, and effortless experience.
+
+---
+
+## Core Principle
+
+Everything must feel natural, clear, and easy to use.
+
+If something feels confusing, heavy, or forced → it is not impeccable.
+
+---
+
+## Clarity
+
+- The user must immediately understand:
+  - what this screen is
+  - what they can do
+- Avoid ambiguity
+- Avoid unnecessary complexity
+
+---
+
+## Effortless
+
+- The UI should feel easy to use without thinking
+- Navigation should be obvious
+- Actions should be intuitive
+- Reduce cognitive load
+
+---
+
+## Intentional Design
+
+- Every element must have a purpose
+- No random:
+  - colors
+  - spacing
+  - shadows
+- Always ask: "Why does this exist?"
+
+---
+
+## Invisible Design
+
+- The UI should not draw attention to itself
+- Focus on content and experience
+- Avoid over-styling
+
+---
+
+## No Friction
+
+- Remove all small annoyances:
+  - poor contrast
+  - tight spacing
+  - unclear buttons
+  - broken images
+- Ensure smooth experience everywhere
+
+---
+
+## Quality over Quantity
+
+- Prefer fewer, better components
+- Avoid adding unnecessary features
+- Focus on refining what exists
+
+---
+
+## Implementation Constraints
+
+- Do not change business logic
+- Do not break existing features
+- Keep UI simple and readable
+- Maintain consistency across components
+
+---
+
+## Goal
+
+The UI should feel:
+
+- clear
+- calm
+- effortless
+- intentional
+- high quality

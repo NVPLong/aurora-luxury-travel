@@ -1,0 +1,85 @@
+---
+description: Impeccable optimize rules for performance and efficiency
+alwaysApply: true
+---
+
+# Impeccable Optimize Rules
+
+Optimize means making the UI fast, smooth, and efficient.
+
+---
+
+## Core Principle
+
+Performance is part of UX.
+
+A slow UI is a bad UI.
+
+---
+
+## Reduce Work
+
+- Avoid unnecessary renders
+- Avoid heavy computations
+- Only update what is needed
+
+---
+
+## Image Optimization
+
+- Use optimized images
+- Use correct sizes
+- Avoid large images
+- Use lazy loading
+
+---
+
+## Smooth Interaction
+
+- Keep interactions responsive
+- Avoid lag
+- Use:
+  - transform
+  - opacity
+- Avoid layout reflow animations
+
+---
+
+## Lazy Loading
+
+- Load content only when needed
+- Improve initial load time
+
+---
+
+## Avoid Heavy Effects
+
+- Avoid complex animations
+- Avoid large libraries if unnecessary
+
+---
+
+## Efficiency
+
+- Keep components lightweight
+- Keep logic simple
+- Avoid over-engineering
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Maintain readability
+- Keep UI stable
+
+---
+
+## Goal
+
+The UI should feel:
+
+- fast
+- smooth
+- responsive
+- efficient

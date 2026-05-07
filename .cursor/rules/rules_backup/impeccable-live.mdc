@@ -1,0 +1,80 @@
+---
+description: Impeccable live rules for real-world UI validation
+alwaysApply: true
+---
+
+# Impeccable Live Rules
+
+Live means testing UI in real-world conditions and improving it continuously.
+
+---
+
+## Core Principle
+
+Real usage reveals the truth.
+
+Do not rely only on local testing.
+
+---
+
+## Ship Early
+
+- Deploy early versions
+- Do not wait for perfection
+
+---
+
+## Real Usage
+
+- Test with real users
+- Test on real devices
+- Test on different networks
+
+---
+
+## Observe Behavior
+
+- Watch how users interact
+- Identify confusion or friction
+- Focus on behavior, not opinions
+
+---
+
+## Feedback Loop
+
+- Collect feedback
+- Improve UI
+- Repeat continuously
+
+---
+
+## Continuous Improvement
+
+- UI is never finished
+- Always refine based on real usage
+
+---
+
+## Reality Check
+
+- If something does not work in practice → fix it
+- Prioritize usability over assumptions
+
+---
+
+## Constraints
+
+- Do not break core functionality
+- Maintain stability
+- Keep UI simple and reliable
+
+---
+
+## Goal
+
+The UI should feel:
+
+- usable
+- reliable
+- tested
+- continuously improving

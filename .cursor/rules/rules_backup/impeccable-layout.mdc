@@ -1,0 +1,96 @@
+---
+description: Impeccable layout rules for spacing, rhythm, hierarchy, and structure
+alwaysApply: true
+---
+
+# Impeccable Layout Rules
+
+Layout is about spacing, structure, visual rhythm, and guiding the user's eye.
+
+Use these rules when the UI feels crowded, flat, monotonous, or unclear.
+
+## Core Principle
+
+A good layout should breathe.
+
+The user should know where to look first within 2 seconds.
+
+## Spacing
+
+- Use a consistent spacing scale:
+  - `gap-2` / 8px
+  - `gap-4` / 16px
+  - `gap-6` / 24px
+  - `py-12` / 48px
+  - `py-24` / 96px
+- Group related elements closer together
+- Separate unrelated sections with more space
+- Avoid random spacing values
+
+## Visual Hierarchy
+
+- Every page needs one clear primary focus
+- The main action should stand out
+- Do not make every element visually equal
+- Use spacing, size, contrast, and position to guide attention
+
+## Grid and Structure
+
+- Use clear grids:
+  - `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+  - `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+- Align elements consistently
+- Avoid layouts that feel randomly placed
+
+## Rhythm
+
+- Do not use equal spacing everywhere
+- Alternate between tight groups and generous section spacing
+- Create a natural reading flow from top to bottom
+
+## Density
+
+- Avoid cramped layouts
+- Avoid wasting too much space
+- Match density to content:
+  - destination cards can be spacious and image-driven
+  - filters should be compact and scannable
+
+## Travel Website Application
+
+For this travel website:
+
+- Hero sections should feel spacious and inspiring
+- Destination grids should not feel like a wall of cards
+- Search and filters should be easy to scan
+- Cards should have enough breathing room
+- Detail pages should clearly separate:
+  - image
+  - title
+  - location
+  - description
+  - highlights
+  - travel info
+
+## Common Fixes
+
+- Increase section spacing
+- Reduce visual clutter
+- Rebalance card grids
+- Give primary CTA more space
+- Use spacing instead of unnecessary borders
+- Improve alignment between cards, text, and controls
+
+## Pitfalls
+
+- Do not use layout to fix too much content
+- If the page has too many elements, simplify content first
+- If nothing is primary, decide the primary content before adjusting spacing
+
+## Constraints
+
+- Do not change routes
+- Do not remove search/filter/sort
+- Do not change business logic unless asked
+- Keep code readable for a first-year CS student
+- Prefer Tailwind CSS

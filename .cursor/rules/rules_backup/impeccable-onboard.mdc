@@ -1,0 +1,84 @@
+---
+description: Impeccable onboarding rules for first-time user experience
+alwaysApply: true
+---
+
+# Impeccable Onboard Rules
+
+Onboarding is about helping users understand and use the UI immediately.
+
+---
+
+## Core Principle
+
+The user should know what to do within seconds.
+
+No instructions needed.
+
+---
+
+## Show, Don’t Tell
+
+- Use UI to guide users
+- Avoid long instructions
+- Use clear labels and visual cues
+
+---
+
+## First Action
+
+- Make the first action obvious
+- Highlight:
+  - search
+  - primary CTA
+  - key interaction
+
+---
+
+## Reduce Friction
+
+- Minimize steps
+- Avoid unnecessary input
+- Keep flow simple
+
+---
+
+## Empty State Guidance
+
+- Use empty states to guide users:
+  - suggest actions
+  - provide examples
+- Never leave empty screens
+
+---
+
+## Progressive Onboarding
+
+- Do not overwhelm users
+- Reveal complexity gradually
+
+---
+
+## Clear Affordance
+
+- Clickable elements must look clickable
+- Use hover states and visual feedback
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Keep UI simple and intuitive
+- Maintain consistency
+
+---
+
+## Goal
+
+The UI should feel:
+
+- intuitive
+- welcoming
+- easy to start
+- self-explanatory

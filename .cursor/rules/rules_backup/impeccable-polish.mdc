@@ -1,0 +1,87 @@
+---
+description: Impeccable polish rules for final UI refinement
+alwaysApply: true
+---
+
+# Impeccable Polish Rules
+
+Polish is about refining small details until the UI feels complete.
+
+---
+
+## Core Principle
+
+Everything should feel "just right".
+
+No rough edges.
+No awkward spacing.
+No inconsistent behavior.
+
+---
+
+## Attention to Detail
+
+- Check all small details:
+  - spacing
+  - alignment
+  - typography
+  - interactions
+
+---
+
+## Alignment
+
+- Ensure elements are aligned
+- Avoid visual misalignment
+- Maintain consistent structure
+
+---
+
+## Spacing Consistency
+
+- Use consistent spacing scale
+- Avoid random margins/paddings
+
+---
+
+## Smooth Interactions
+
+- Use consistent transitions:
+  - `transition-all duration-300 ease-out`
+- Ensure hover states feel natural
+
+---
+
+## Visual Balance
+
+- Avoid elements that feel too heavy or too light
+- Maintain balance across the layout
+
+---
+
+## Remove Rough Edges
+
+- Fix anything that feels:
+  - off
+  - uneven
+  - awkward
+- Refine until smooth
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Keep UI simple
+- Maintain consistency
+
+---
+
+## Goal
+
+The UI should feel:
+
+- refined
+- balanced
+- smooth
+- complete

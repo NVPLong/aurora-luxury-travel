@@ -1,0 +1,100 @@
+---
+description: Impeccable delight rules for subtle UX improvements
+alwaysApply: true
+---
+
+# Impeccable Delight Rules
+
+Delight is about small, thoughtful details that improve user experience.
+
+Not decoration.
+Not flashy effects.
+
+---
+
+## Core Principle
+
+Delight should be subtle, useful, and non-disruptive.
+
+If it draws too much attention → it is not good delight.
+
+---
+
+## Purposeful Delight
+
+- Only add delight if it improves usability
+- Examples:
+  - hover feedback
+  - loading states
+  - clear empty states
+
+---
+
+## Subtlety
+
+- Keep all effects minimal
+- Avoid strong animations or loud visuals
+- User should feel it, not notice it
+
+---
+
+## Non-Disruptive
+
+- Do not interrupt user flow
+- Avoid:
+  - popups
+  - auto animations
+  - delays
+- Respect user control
+
+---
+
+## Context Awareness
+
+- Apply delight where it makes sense:
+  - buttons → hover feedback
+  - lists → smooth appearance
+  - empty states → helpful message
+
+---
+
+## Rarity
+
+- Do not overuse delight
+- Too many effects reduce impact
+
+---
+
+## Examples
+
+Good:
+
+- smooth hover transitions
+- subtle shadow changes
+- helpful empty states
+- clean loading skeletons
+
+Bad:
+
+- bouncing animations
+- flashy transitions
+- unnecessary effects
+
+---
+
+## Constraints
+
+- Do not change business logic
+- Keep interactions simple
+- Maintain consistency across UI
+
+---
+
+## Goal
+
+The UI should feel:
+
+- pleasant
+- smooth
+- thoughtful
+- effortless

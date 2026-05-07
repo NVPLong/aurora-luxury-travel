@@ -1,0 +1,85 @@
+---
+description: Impeccable documentation rules for design systems
+alwaysApply: true
+---
+
+# Impeccable Document Rules
+
+Documentation ensures design consistency and long-term quality.
+
+---
+
+## Core Principle
+
+Do not rely on memory.
+
+Document how and why decisions are made.
+
+---
+
+## Document Decisions
+
+- Record:
+  - design choices
+  - UI patterns
+  - reasoning behind decisions
+- Ensure future consistency
+
+---
+
+## Define Patterns
+
+- Standardize:
+  - cards
+  - buttons
+  - layout
+  - spacing
+- Reuse patterns instead of reinventing
+
+---
+
+## Reusability
+
+- Create reusable components
+- Avoid duplicating logic or UI
+- Keep system scalable
+
+---
+
+## Simplicity
+
+- Keep documentation clear and readable
+- Avoid unnecessary complexity
+
+---
+
+## Living System
+
+- Update documentation when design changes
+- Keep it relevant and current
+
+---
+
+## Alignment
+
+- Ensure all contributors (human or AI) follow the same rules
+- Use documentation as a shared reference
+
+---
+
+## Constraints
+
+- Do not over-document
+- Keep focus on practical usage
+- Maintain clarity
+
+---
+
+## Goal
+
+The system should feel:
+
+- consistent
+- maintainable
+- scalable
+- understandable
