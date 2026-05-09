@@ -1,666 +1,322 @@
 # Aurora Progress Journal
 
-## Purpose
+> **Status**: Refactoring to V2 Strategy | **Active Brand**: Aurora | **Philosophy**: Expensive Silence
 
-- Single source of truth for current Aurora UI/design progress.
-- All future AI agents must read this file before UI/design decisions.
-- All meaningful tasks must update this file afterward.
+## 1. Operational Protocol (Mandatory for AI Agents)
+- **Primary Source**: Read `AGENTS.md` and this file first.
+- **Update Protocol**: Record all code changes in the **Changelog**.
+- **Constraint**: Do not remove history. Move completed tasks to **Archive** if needed.
+- **Verification**: Run `npm run lint` and `npm run build` after UI/Logic changes.
 
-## Update Protocol for AI Agents
+---
 
-- Always read this file before starting UI/design work.
-- Also read:
-  - `.cursor/rules/system.md`
-  - `.cursor/rules/impeccable-system.mdc`
-  - `.cursor/rules/ui-design.md`
-- `ui-design.md` is the primary visual/design source of truth.
-- After meaningful work, update this file.
-- Keep updates short and factual.
-- Do not rewrite history.
-- Add new updates to the Changelog section only.
-- Move completed items from Open Tasks to Completed Work.
-- Never remove constraints unless explicitly instructed by the user.
-- If uncertain, add notes under Open Questions.
-- Record lint/build status after significant code changes.
-- Prefer refinement passes over redesigns.
+## 2. Current Architecture State
+| Component | Status | Implementation |
+|---|---|---|
+| **Core Framework** | Production-Ready | Next.js 15 (App Router), TypeScript Strict |
+| **Design System** | Codified | Tailwind CSS 4.0, Aurora Cream Palette |
+| **Animation** | Active | Framer Motion (SectionReveal with Luxury Easing) |
+| **Data Layer** | Mock (V1) | Hardcoded JSON in `data/` and `constants/` |
+| **AI Layer** | Teaser (V1.5) | UI side-drawer with mock responses |
+| **Deployment** | CI/CD Active | Vercel (Production) |
 
-## Current Project Identity
+---
 
-- Visual brand: Aurora
-- Previous brand: VietTravel
-- Direction:
-  - luxury travel editorial
-  - quiet luxury
-  - cinematic minimalism
-  - premium global-ready travel platform
-- Inspirations:
-  - Aman Resorts
-  - The Brando
-- Not Vietnam-only anymore.
-- Tone:
-  - calm
-  - immersive
-  - refined
-  - editorial
-  - premium but restrained
+## 3. Protected Systems (Do Not Modify without explicit request)
+- **Filter/Search Engine**: `lib/utils.ts` and `destinations/page.tsx` state logic.
+- **Motion Constants**: The `luxuryEasing` cubic-bezier and `SectionReveal` logic.
+- **Brand Identity**: Lora (Serif) / Inter (Sans) hierarchy and Cream/Gold palette.
 
-## Design Decisions
+---
 
-- Light luxury palette.
-- Soft translucent surfaces.
-- Bubble/glass-like premium atmosphere.
-- Avoid dark navy sections outside Hero.
-- Avoid neon cyan.
-- Avoid emoji icons.
-- Avoid overdesign.
-- Avoid aggressive animation.
-- Use professional Lucide icons.
-- Use cinematic motion subtly.
-- Prefer whitespace and breathable layouts.
-- Maintain premium editorial feeling.
-- Hero is highest priority area.
-- Performance is critical.
-- Use `next/image` where possible.
-- Avoid heavy full-screen autoplay videos.
+## 4. Current Priorities
+1. **Documentation Maturity**: (Current Task) Evolving the memory system for AI scalability.
+2. **AI Backend Integration**: Moving from mock responses to actual RAG + Gemini API.
+3. **Data Migration**: Planning the transition from hardcoded TypeScript to PostgreSQL + Prisma.
 
-## Current Hero State
+---
 
-- Main Hero uses cinematic lake/mountain image.
-- Hero headline: `Where silence becomes a destination`
-- Hero subtext: `Curated journeys through rare landscapes, quiet escapes, and unforgettable stays.`
-- CTA:
-  - `Khám phá ngay`
-  - `Xem điểm đến`
-- Hero is static (no right-side ski video panel).
-- Focus is now stillness, editorial typography, atmosphere, and CTA clarity.
-- Design decision:
-  - keep Hero quiet, clean, and premium
-  - avoid secondary media conflict inside Hero composition
+## 5. Technical Debt
+- **Hardcoded Data**: `data/destinations.ts` serves as the primary data source; needs migration to a persistent database (PostgreSQL + Prisma).
+- **Multilingual Strategy**: Vietnamese strings are currently hardcoded; needs a structured i18n implementation (next-intl) for future global expansion.
+- **Image Asset Management**: Relying on external Unsplash URLs and local assets; requires a centralized Cloudinary or Vercel Blob strategy for production reliability.
+- **AI Mock State**: The Concierge AI utilizes mock responses; requires integration with the Gemini RAG pipeline.
+- **Component Modularization**: Some large pages (e.g., `DestinationDetailPage`) could benefit from further component extraction for better maintainability.
 
-## Completed Work
+---
 
-### Branding migration toward Aurora
+## 6. Future Expansion Paths
+- **Global Destinations**: Expanding from Vietnam-only data to global luxury sanctuaries.
+- **User Collections**: Authentication-backed "Saved Collections" and "Itineraries."
+- **Full RAG Pipeline**: Vectorizing editorial content for high-precision concierge advice.
 
-- Replaced major visible UI brand copy from VietTravel to Aurora.
-- Updated core metadata and luxury-facing sections toward global-ready tone.
+---
 
-### Hero redesign
+## 7. Active Tasks
+- [ ] Implement backend API layer for destinations.
+- [ ] Integrate actual Gemini Pro API for the Concierge.
+- [ ] Migrate static assets to a cloud media provider (e.g., Cloudinary).
 
-- Full-viewport cinematic Hero with image-first approach.
-- Added dark readability overlays and restrained motion.
-- Removed right-side ski video panel to preserve quiet editorial Hero composition.
-- Removed local ski video asset from project to fully commit Hero to static editorial direction.
+---
 
-### Background/surface redesign
+## 8. Changelog
 
-- Migrated multiple sections from dark navy blocks to layered light luxury backgrounds.
-- Added reusable Aurora surface utilities for translucent premium cards.
+### 2026-05-09 — HeroSection Composition & CTA Refinement
+- **Asymmetrical Composition**: Shifted the Hero layout to a 12-column grid, placing narrative content in an asymmetrical 7-column block to avoid the "tourism postcard" look.
+- **Editorial Typography**: Added italicized emphasis to the headline and refined vertical spacing (`pb-32`, `mt-10`, `mt-16`) for a more unhurried, breathable feel.
+- **Restrained CTAs**:
+  - Replaced the primary button with a minimal text-and-line indicator that emphasizes the narrative path.
+  - Simplified the secondary CTA to a delicate text link with a fine underline.
+- **Elegant Scroll Indicator**: Moved the scroll hint to the bottom-right for asymmetrical balance and refined the animation to a slower, more abstract light-flow.
+- **Files**: `components/ui/HeroSection.tsx`
+- **Checks**: npm run lint: pass, npm run build: pass
+- **Design Reasoning**: Luxury is defined by intentional asymmetry and the removal of visual clutter. By moving away from centered "app-style" buttons and using delicate lines and italicized typography, we align the entry experience with high-end editorial standards.
 
-### Lucide icon migration
+### 2026-05-09 — HeroSection Editorial Refinement (Phase 1)
 
-- Replaced many emoji-style icons in home/about/destination/detail/empty sections.
-- Standardized icon styling with soft premium colors and subtle containers.
-
-### Light luxury UI pass
-
-- Refined typography hierarchy and spacing rhythm.
-- Improved hover transitions and removed loud visual effects.
-
-### Destination pages refinement
-
-- Refined `/destinations` and `/destinations/[id]` to match Aurora palette and editorial tone.
-- Preserved filtering/search/sort logic.
-
-### About page refinement
-
-- Updated copy, cards, roadmap surfaces, and icon treatment to Aurora direction.
-
-### Search/filter UI refinement
-
-- Refined `SearchBar`, `FilterPanel`, and `EmptyState` with light translucent surfaces.
-- Preserved behavior and state handling.
-
-### Responsive improvements
-
-- Improved Hero media panel behavior across mobile/desktop without layout break.
-
-### Build/lint passing
-
-- Significant passes validated with `npm run lint` and `npm run build`.
-
-## Files Modified So Far
-
-- `components/ui/HeroSection.tsx` — Hero copy, overlays, ski video panel, fallback behavior.
-- `app/globals.css` — Aurora section/surface utility classes for consistent premium background system.
-- `components/home/FeaturedDestinations.tsx` — refined section copy, palette, CTA styling.
-- `components/home/WhyChooseUs.tsx` — global luxury copy and Lucide icon cards.
-- `components/home/StatsSection.tsx` — light premium stat panel and professional icon set.
-- `components/ui/DestinationCard.tsx` — icon cleanup and professionalized card metadata visuals.
-- `components/ui/FilterPanel.tsx` — translucent filter surfaces and calmer tone.
-- `components/ui/SearchBar.tsx` — light luxury input/select styling and refined copy.
-- `components/ui/EmptyState.tsx` — Lucide icons, calmer empty-state UI and CTA polish.
-- `app/destinations/page.tsx` — global-facing heading/copy and Aurora section backgrounds.
-- `app/destinations/[id]/page.tsx` — detail page surface/light redesign and icon modernization.
-- `app/about/page.tsx` — Aurora metadata/copy refinement, roadmap surface and icon updates.
-- `app/page.tsx` — small Aurora naming consistency fix in section comment.
-- `tailwind.config.js` — Aurora palette and serif heading font support.
-- `package.json` — added `lucide-react` dependency.
-- `package-lock.json` — lockfile update for dependency installation.
-- `public/videos/.gitkeep` — reserved videos folder for Hero local media asset.
-
-## Constraints
-
-- Do not redesign from scratch.
-- Do not remove search/filter/sort.
-- Do not change routes.
-- Do not change business logic unless explicitly requested.
-- Prefer small targeted refinement passes.
-- Keep code readable for a first-year CS student.
-- Add Vietnamese comments only for important logic.
-- Keep performance smooth.
-- Run:
-  - `npm run lint`
-  - `npm run build`
-  after significant changes.
-
-## Open Tasks
-
-- [ ] Recheck remaining VietTravel/Vietnam wording in non-UI data/docs if user requests.
-- [ ] Continue Hero polish (mood fidelity and subtle motion quality).
-- [ ] Improve responsive cinematic layout if needed after real-device review.
-- [ ] Continue premium UI refinement in small focused passes.
-
-## Open Questions
-
-- [ ] Should Aurora CTA copy stay bilingual (`Khám phá ngay`) or move fully to English?
-- [ ] Should roadmap/about content remain student-portfolio framing or become pure brand narrative?
-- [ ] Should destination taxonomy labels (`Bắc/Trung/Nam`) be localized or converted to global regions?
-
-## Changelog
-
-### 2026-05-06 — Hero static editorial correction
-
-- Changed:
-  - Removed the entire right-side ski video panel from Hero.
-  - Cleaned all video-related Hero code to avoid visual conflict with cinematic background image.
-  - Rebalanced Hero text composition to keep editorial focus on stillness, atmosphere, and CTA.
-- Files:
-  - `components/ui/HeroSection.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-  - npm run build: pass
-- Notes:
-  - Static Hero direction is intentional: no cinematic ski video panel and no local ski video dependency.
-
-### 2026-05-06 — Remove unused Hero ski video asset
-
-- Changed:
-  - Deleted unused `public/videos/ski-footage.mp4` after confirming Hero is static and no longer references video media.
-  - Kept `public/videos/.gitkeep` to preserve folder structure.
-- Files:
-  - `public/videos/ski-footage.mp4` (deleted)
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: not run (no code behavior change)
-  - npm run build: not run (no code behavior change)
-- Notes:
-  - Cinematic ski video direction was intentionally removed in favor of a quieter, cleaner, editorial Hero.
-
-### 2026-05-06 — Aurora redesign and correction passes
-
-- Changed:
-  - Migrated core UI direction from dark/cyan-heavy style to Aurora light luxury system.
-  - Refined Hero + Navbar behavior and added cinematic ski panel as optional enhancement.
-  - Replaced many emoji visuals with Lucide icons and polished global-ready copy in key surfaces.
-- Files:
+- **Atmospheric Immersion**:
+  - Introduced a `.aurora-grain` utility in `globals.css` to provide a subtle cinematic paper texture across key sections.
+  - Applied the grain overlay to the HeroSection to enhance the "luxury magazine" feel.
+- **Intentional Interaction**:
+  - Updated the secondary CTA to "Our Vision" linking to the `/about` page, ensuring every action has a distinct editorial purpose.
+  - Replaced the standard scroll arrow with a custom, unhurried vertical line animation that reinforces the "Expensive Silence" philosophy.
+- **Files**:
   - `components/ui/HeroSection.tsx`
   - `app/globals.css`
-  - `components/home/FeaturedDestinations.tsx`
-  - `components/home/WhyChooseUs.tsx`
-  - `components/home/StatsSection.tsx`
-  - `components/ui/DestinationCard.tsx`
-  - `components/ui/FilterPanel.tsx`
-  - `components/ui/SearchBar.tsx`
-  - `components/ui/EmptyState.tsx`
-  - `app/destinations/page.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Luxury is communicated through subtle textures and unhurried motion. By replacing standard UI tropes (like bouncing arrows) with more abstract, elegant indicators, we deepen the cinematic immersion of the Aurora entry experience.
+
+### 2026-05-07 — Final Editorial Refinement Pass (Destination Detail)
+
+- **Unified Narrative Experience**: Performed a final editorial pass across the destination detail page to ensure total harmony between typography, motion, and spacing.
+- **Atmospheric Pacing**:
+  - Increased vertical breathing room between sections to `py-32 lg:py-48`, reinforcing the "Expensive Silence" philosophy.
+  - Standardized the core motion system with a more restrained `y=15` displacement for all cinematic reveals.
+  - Harmonized image zoom transitions across the platform to a consistent, unhurried `2000ms` duration.
+- **Typographic Maturity**:
+  - Finalized the font-weight hierarchy, standardizing metadata labels to `font-medium` or `font-semibold` to eliminate visual noise.
+  - Ensured all compact UI headings (Signature Moments, Continue Exploring) utilize the Sans-serif (Inter) system for optimal Vietnamese rendering.
+- **Files**:
   - `app/destinations/[id]/page.tsx`
-  - `app/about/page.tsx`
+  - `components/ui/SectionReveal.tsx`
+  - `components/ui/DestinationCard.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Luxury is defined by the absence of friction. By standardizing the subtle rhythms of motion and spacing, we ensure the Aurora experience feels like a single, unhurried narrative rather than a collection of independent features.
+
+### 2026-05-07 — Typography Consistency Audit & Refinement
+
+- **Audited**: Performed a site-wide typography audit focused on heading rhythm, metadata weights, and Vietnamese readability.
+- **Fixed**:
+  - **Standardized Metadata**: Refined labels (e.g., "Next Journey", "Cultural Memory", "Location") from `font-bold` to `font-semibold` or `font-medium` to align with the "restrained luxury" aesthetic.
+  - **Heading Consistency**: Converted compact headings (Destination titles in grids, Signature Moments, Quiet Fact values) from `font-serif` to `font-sans font-semibold`. This ensures cleaner rendering for Vietnamese diacritics and maintains a clear hierarchy between narrative storytelling (Serif) and UI components (Sans).
+  - **Readability Pass**: Standardized `leading-relaxed` and `leading-[1.8+]` across all editorial text blocks to ensure "Expensive Silence" and breathing room.
+- **Files**:
+  - `components/ui/ContinueExploring.tsx`
+  - `components/ui/QuietFacts.tsx`
+  - `components/ui/JourneyRhythm.tsx`
+  - `components/ai/ConciergeIntro.tsx`
+  - `app/destinations/[id]/page.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Luxury is communicated through consistency and restraint. By standardizing weights and ensuring font families serve their specific roles (Narrative vs. UI), we eliminate visual noise and improve the legibility of the Aurora storytelling experience.
+
+### 2026-05-07 — "Continue Exploring" Section Implementation
+
+- **Added**:
+  - **Staggered Editorial Grid**: Designed and implemented the `ContinueExploring` section, which uses a non-linear, staggered layout to avoid the "ecommerce grid" feeling.
+  - **Natural Discovery**: Integrated the section at the bottom of destination detail pages to encourage users to follow the narrative thread into other curated journeys.
+  - **Refined Interaction**: Added high-end hover effects (smooth zoom, blurred "View Story" overlays) that align with the "Expensive Silence" motion system.
+  - **Dynamic Filtering**: The section automatically excludes the current destination and curates a randomized selection to keep the experience fresh.
+- **Files**:
+  - `components/ui/ContinueExploring.tsx` [NEW]
+  - `app/destinations/[id]/page.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Exploration should feel like turning the page of a beautiful book. By using vertical staggering and generous spacing, we ensure the user feels invited rather than pressured to click.
+
+### 2026-05-07 — AI Concierge Tone & Copy Refinement (Human-Centric Pass)
+
+- **Refined**:
+  - **Poetic Narrative**: Rewrote the concierge introduction to emphasize "remembering" and "listening" over "searching," positioning the AI as a culturally aware presence.
+  - **Human-Centric Language**: Removed standard tech terminology (e.g., "Begin Dialogue," "Status," "Intelligence") in favor of more organic, premium phrasing (e.g., "Share your vision," "Observation," "Cultural Memory").
+  - **Atmospheric Context**: Infused the copy with sensory details (mist over terraced hills, glowing lanterns) to ground the AI in the brand's cinematic world.
+  - **Typography Alignment**: Adjusted the hierarchy to ensure the refined copy "breathes" effectively within the editorial grid.
+- **Files**:
+  - `components/ai/ConciergeIntro.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Luxury AI should not feel like an algorithm; it should feel like a well-traveled friend. By shifting the tone from functional to evocative, we deepen the user's emotional connection to the Aurora experience.
+
+### 2026-05-07 — AI Concierge Entry Section Implementation
+
+- **Changed**:
+  - **Editorial Introduction**: Designed and implemented the `ConciergeIntro` section on the homepage, introducing the AI Concierge as a "quiet guide to the soul of travel" rather than a standard chatbot.
+  - **Cinematic Aesthetic**: Used a large-format editorial layout with a focus on atmosphere, featuring high-contrast serif typography and a cinematic visual anchor.
+  - **Restrained Interaction**: Implemented a single, elegant "Begin Dialogue" CTA button that aligns with the "Expensive Silence" philosophy.
+  - **Status Integration**: Added a subtle "Refining Intelligence" status indicator to communicate the ongoing development of the AI layer elegantly.
+- **Files**:
+  - `components/ai/ConciergeIntro.tsx` [NEW]
   - `app/page.tsx`
-  - `tailwind.config.js`
-  - `package.json`
-  - `package-lock.json`
-  - `public/videos/.gitkeep`
-- Checks:
+- **Checks**:
   - npm run lint: pass
   - npm run build: pass
-- Notes:
-  - Historical note: this entry predates the static-Hero decision and asset removal.
+- **Design Reasoning**: The introduction of AI should feel like an expansion of the editorial voice. By avoiding chatbot tropes and focusing on the "soul of travel," we maintain user trust and brand alignment.
 
-### 2026-05-07 — Aurora documentation consistency
+### 2026-05-07 — "Quiet Facts" Section Implementation
 
-- Changed:
-  - Updated `AGENTS.md` to establish the new Aurora cinematic luxury editorial identity.
-  - Instructed all AI agents to read `SKILLS.md` and `aurora-progress.md`.
-  - Replaced outdated VietTravel / cyan-heavy wording in `AGENTS.md` and `README.md`.
-- Files:
-  - `AGENTS.md`
-  - `README.md`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-  - npm run build: pass
-- Notes:
-  - Consistency alignment across docs to prevent AI agents from using old branding.
-
-### 2026-05-07 — Modernize README.md
-
-- Changed:
-  - Rewrote README.md to fully reflect Aurora's cinematic luxury branding.
-  - Added key terminology (editorial experience, immersive discovery, modern minimal UI).
-  - Maintained beginner-friendly explanations and setup instructions.
-- Files:
-  - `README.md`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: not run (no code change)
-  - npm run build: not run (no code change)
-- Notes:
-  - Ensured Next.js, TypeScript, Tailwind CSS, and search/filter/sort features remain prominent.
-
-### 2026-05-07 — Hero Composition Refinement
-
-- Changed:
-  - Increased `max-w-4xl` to `max-w-[56rem]` to widen the left-aligned text column and reduce left-heavy feel.
-  - Let typography breathe: slightly larger text (e.g. `lg:text-[4.25rem]`), improved line heights (`leading-[1.12]` and `leading-[1.7]`), and added breathing room (`mt-8`, `gap-6`).
-  - Polished CTAs: wider padding (`px-9`), tracking, and refined font weights to keep it elegant.
-- Files:
-  - `components/ui/HeroSection.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - Kept layout left-aligned but balanced horizontally by spanning the content across a wider readable area.
-
-### 2026-05-07 — Copy Consistency Audit
-
-- Changed:
-  - Translated UI labels across `FilterPanel`, `SearchBar`, and `EmptyState` to English to support the global-ready direction.
-  - Refined `DestinationCard` buttons and metadata formats to use standard English terminology ("reviews", "View details").
-  - Removed emojis from `SORT_OPTIONS` to maintain a quiet, luxury visual aesthetic.
-  - Rewrote the `About` page copy, removing the "student portfolio" framing and replacing it with a polished, vision-focused narrative describing the platform's future integration with AI.
-  - Updated the roadmap feature lists to English.
-- Files:
-  - `components/ui/EmptyState.tsx`
-  - `components/home/FeaturedDestinations.tsx`
-  - `components/ui/FilterPanel.tsx`
-  - `constants/filters.ts`
-  - `components/ui/DestinationCard.tsx`
-  - `components/ui/SearchBar.tsx`
-  - `app/about/page.tsx`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - Maintained mock data values (Bắc, Trung, Nam) in Vietnamese to preserve functional filter logic while presenting a global-ready UI shell.
-
-### 2026-05-07 — Lightweight UI Polish Audit
-
-- Changed:
-  - **Navbar**: Increased height (`h-16` to `lg:h-20`) for desktop breathing room. Expanded CTA button padding (`px-6 py-2.5`) and added subtle tracking to match the elegant serif styling. Translated links to English.
-  - **Footer**: Generously increased vertical padding (`py-12` to `lg:py-24`). Expanded spacing between grouped lists (`space-y-2` to `space-y-3`) to feel less cluttered and more editorial. Translated text to English.
-  - **Stats Section**: Adjusted padding to match standard component rhythm (`py-16` to `lg:py-24` and `p-8` to `p-10 lg:p-12`). Increased internal grid gaps.
-  - **Destination Cards**: Increased inner content padding (`p-5` to `p-6`) to let the text breathe naturally away from the borders.
-- Files:
-  - `components/layout/Navbar.tsx`
-  - `components/layout/Footer.tsx`
-  - `components/home/StatsSection.tsx`
-  - `components/ui/DestinationCard.tsx`
-- Checks:
-  - npm run lint: pass
-  - npm run build: pass
-- Notes:
-  - Preserved the existing layout structure entirely, just relaxed the constraints to create a high-end, unhurried visual rhythm.
-
-### 2026-05-07 — Destination Detail Editorial Refinement
-
-- Changed:
-  - **Hero**: Increased height to `60vh` (min 400px) for a more cinematic, immersive image impact. Replaced `font-extrabold` with `font-medium font-serif` to achieve quiet luxury instead of loud tourism-poster weight. Added a gold eyebrow label (`category · region`) above the title for editorial hierarchy. Improved breadcrumb to use `—` separator and all-caps tracking for a refined newspaper-column feel.
-  - **Meta strip**: Replaced `đánh giá` with `reviews`. Removed the awkward "Region Bắc" duplication — now cleanly shows `region` value only. Moved the budget badge to the trailing right of the meta row.
-  - **Content section**: Added more breathing room (`py-16 lg:py-20`). Improved body text rhythm (`text-base sm:text-[1.05rem] leading-[1.85] font-light`) for a magazine-quality reading experience.
-  - **Highlights**: Replaced the noisy 2-column card grid with a clean numbered line-list (`01, 02, 03...`) divided by hairline separators. Feels curated, not checklist-generic. Gold numbers anchor each item.
-  - **Sidebar**: Increased card padding (`p-6 lg:p-7`). Replaced the section label from `h3` to a small-caps eyebrow label for typographic consistency. Moved icons to gold color for visual warmth. Fixed `Region Region X` duplication bug — now simply shows the raw region value. Improved AI teaser copy to fully English.
-  - **Back link**: Replaced `← Quay lại danh sách` with `ArrowLeft icon + "All destinations"`.
-  - **AGENTS.md**: Strengthened the mandatory reading block, expanded brand identity description, and added a comparison table showing what makes Aurora different from a generic travel site.
-- Files:
+- **Changed**:
+  - **Editorial Information Layer**: Designed and implemented the "Quiet Facts" section, a horizontal information bar that replaces the traditional "spec-sheet" sidebar card.
+  - **Refined Data Structure**: Expanded the `Destination` interface to include an `atmosphere` field, providing a more emotional context to each location.
+  - **Minimalist Design**: Used a clean grid with serif typography and subtle icons (Ideal Season, Recommended Duration, Atmosphere, Travel Style) to present essential data with "Expensive Silence."
+  - **Layout Rebalancing**: Reconfigured the content section to be more spacious, moving secondary actions (Concierge AI teaser) to a more subtle, integrated sidebar position.
+- **Files**:
+  - `components/ui/QuietFacts.tsx` [NEW]
   - `app/destinations/[id]/page.tsx`
-  - `AGENTS.md`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-  - npm run build: pass (16 static pages generated)
-- Notes:
-  - The `renderStars` import was removed as raw star + rating number reads cleaner editorially.
-  - All 10 destination static pages (`/destinations/[id]`) pre-rendered successfully at build time.
-
-### 2026-05-07 — README.md Full Rewrite
-
-- Changed:
-  - Removed all Vietnamese body text and student-portfolio framing.
-  - Replaced mixed Vietnamese/English copy with clean English throughout.
-  - Rewrote the project description to clearly define Aurora as a "cinematic luxury travel platform" and "editorial destination discovery experience" rather than a student learning exercise.
-  - Added a design philosophy table (tone, typography, palette, motion, whitespace, inspiration).
-  - Updated tech stack table to include Framer Motion and lucide-react, and corrected Next.js version to 15.
-  - Preserved the filter system flow diagram — it remains accurate and useful.
-  - Preserved the directory structure — accurate and beginner-friendly.
-  - Added a design philosophy section at the bottom pointing to SKILLS.md and aurora-progress.md.
-  - Updated badge colors to match Aurora gold palette.
-  - Replaced student author section with "Built with intention. Designed for stillness."
-- Files:
-  - `README.md`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - No code changes — lint/build not required.
-- Notes:
-  - README now accurately reflects the live V1 state and serves as a credible project introduction for any future collaborator or AI agent.
-
-### 2026-05-07 — Hero Final Polish Pass
-
-- Changed:
-  - **Eyebrow**: Replaced the redundant `AURORA • AURORA COLLECTION` dot-badge with a thin horizontal gold line (`h-px w-8`) followed by `Aurora · Curated Collection`. Smaller tracking (`0.28em`), lower opacity (`white/65`), lighter weight — more like a magazine dateline.
-  - **Headline**: Slightly reduced size on large screens (`lg:text-[4rem]` vs `4.25rem`) and tightened tracking (`-0.015em`) for a more composed, less billboard-like headline. Removed the nested `<span>` hover `drop-shadow` — the scale micro-interaction was kept but the glow was too noisy.
-  - **Subtitle**: Constrained width from `max-w-3xl` to `max-w-[34rem]` — creates a more editorial, intentional line break. Reduced opacity to `white/70` and size to `text-[1.1rem]` for a calmer presence subordinate to the headline.
-  - **Content column**: Narrowed from `max-w-[56rem]` to `max-w-[52rem]` for slightly tighter editorial feel. Increased left/right padding on large screens (`lg:px-16`) so the block is not pinned to the very edge.
-  - **Vertical nudge**: Added `pb-24` to the foreground motion wrapper — pushes the text block upward relative to the scroll hint, improving visual balance between content and the bottom hint indicator.
-  - **CTA defaults**: Updated default labels from `Khám phá ngay` / `Xem điểm đến` to `Explore Collection` / `View Destinations` for global-ready consistency.
-- Files:
-  - `components/ui/HeroSection.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - Motion system (parallax, stagger, blur-in) preserved intact — changes were purely compositional and typographic.
-
-### 2026-05-07 — Destination Detail Deep Editorial Refinement
-
-- Changed:
-  - **Standfirst paragraph**: The `description` field (previously only used on destination cards) is now rendered as a **lead paragraph** on the detail page — larger text (`text-lg sm:text-xl`), anchored with a gold left-border accent (`border-l-2 border-[color:#C8A96A]/40 pl-5`). This is the single biggest emotional upgrade — gives each destination a "magazine deck" that hooks the reader before the long form editorial text begins.
-  - **Gold accent rule**: Added a thin decorative horizontal rule (`bg-gradient-to-r from-[color:#C8A96A]/60 to-transparent`) with a small "Aurora Collection" label above the standfirst, creating a visual bridge from hero to body content.
-  - **Hero height**: Increased from `60vh` to `70vh` (min 460px) — the image commands more authority and emotional weight before the reader scrolls.
-  - **Multi-layer overlay**: Added a subtle left-to-right gradient (`from-[rgba(4,10,16,0.30)]`) alongside the existing top-to-bottom gradient. This softly anchors the bottom-left text area without flattening the entire image.
-  - **Body text**: Separated standfirst (`text-slate-800 font-light`) from body (`text-slate-600 font-light text-[0.95rem] leading-[1.9]`) — clear hierarchy, easier to read, richer atmosphere.
-  - **Highlights list**: Increased row height (`py-5`), softened divider to `divide-slate-100`, refined number to `font-light text-xs tracking-wider` — reads like a curated editorial index, not a checklist.
-  - **Mobile back link**: Added an inline back link at the top of the content section, visible only on mobile (`lg:hidden`). The sidebar back button is now desktop-only (`hidden lg:flex`).
-  - **Quick Facts card**: Replaced `bg-white/65 backdrop-blur-xl` with `bg-white/70 border border-slate-100` — cleaner, less blurry, more composed. Label updated "Style" → "Travel Style".
-  - **AI teaser**: Removed the gold border (`border-[color:#C8A96A]/20`) and replaced with `border-slate-200/60` — it no longer competes with the Quick Facts card visually. Title label moved to all-caps `text-xs` — quieter presence.
-  - **Content section padding**: `py-16 lg:py-20` → `py-16 lg:py-24` for more editorial breathing room on desktop.
-  - **Column gap**: `gap-12 lg:gap-16` → `gap-12 lg:gap-20` — creates clearer separation between the editorial body and the sidebar.
-  - **Breadcrumb**: Reduced opacity further (`white/45`) and font size (`0.65rem`) — completely non-competing with the headline.
-  - **Eyebrow**: Reduced to `0.65rem tracking-[0.3em] font-light` — more delicate magazine-category label feel.
-- Files:
-  - `app/destinations/[id]/page.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-  - npm run build: pass (16 static pages, compiled in 4.0s)
-- Remaining weaknesses:
-  - `longDescription` and `highlights` data is still in Vietnamese — emotional tone is limited by the raw mock data.
-  - No skeleton/loading placeholder for the hero image on slow connections.
-  - Detail page has no "Related destinations" or "Continue exploring" section at the bottom.
-- Future opportunities:
-  - Add a curated "You might also enjoy" section below the content using `getFeaturedDestinations()`.
-  - Translate mock data to English for full global-ready editorial voice.
-  - Add subtle Framer Motion fade-in for the standfirst paragraph on page load.
-
-### 2026-05-07 — Search Bar Experience Refinement
-
-- Changed:
-  - **Placeholder**: Updated to a more evocative, brand-aligned tone: `"Find your next sanctuary..."`.
-  - **Typography**: Applied `font-light` and `tracking-wide` to the input field for a refined editorial feel.
-  - **Icons**: Switched from inline SVGs to `Search` and `X` from `lucide-react`. Added a transition that tints the search icon to Aurora gold (`#C8A96A`) when the input is focused.
-  - **Focus States**: Refined the focus ring to a subtle, low-opacity gold (`focus:ring-[color:#C8A96A]/20`) to avoid harsh startup-style outlines.
-  - **Spacing**: Increased input padding (`py-4`) and row spacing (`space-y-4`) for a more "airy" and breathable layout.
-  - **Result Count**: Replaced generic text with a premium "colophon" style: all-caps, small-size (`text-[0.8rem]`), and tracked (`tracking-[0.1em]`).
-  - **Sort Dropdown**: Redesigned the select component with a custom arrow, cleaner borders, and a more integrated feel with the Aurora design system. Added responsive stacking for mobile.
-- Files:
-  - `components/ui/SearchBar.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - All existing search and sort logic was preserved exactly. The changes were purely visual and typographic to align with the brand.
-
-### 2026-05-07 — Filter Panel Editorial Refinement
-
-- Changed:
-  - **Refined Active States**: Replaced loud solid gold backgrounds on buttons with a more restrained aesthetic: gold text, subtle gold borders (`border-[color:#C8A96A]/30`), and a faint gold tint background.
-  - **Minimalist Buttons**: Inactive buttons are now borderless and transparent by default, only showing a soft background on hover to reduce visual noise.
-  - **Typography**: Header labels (Region, Travel Style, Budget) moved to a more elegant `0.65rem` uppercase tracked style (`tracking-[0.2em]`).
-  - **Header Polish**: The main "Filters" title is now a refined small-caps label with increased tracking (`tracking-[0.25em]`).
-  - **Integrated Badge**: The active filter count badge now uses a gold-on-gold tint theme, matching the new button states.
-  - **Atmospheric Copy**: Updated "Category" label to "Travel Style" for a more curated, editorial tone.
-  - **Breathable Layout**: Increased vertical gap between filter groups (`space-y-8`) and internal padding (`p-6`).
-- Files:
-  - `components/ui/FilterPanel.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The functional logic (toggling filters, clearing all) remains untouched. The focus was purely on achieving "expensive silence" in the UI.
-
-### 2026-05-07 — Empty State Editorial Refinement
-
-- Changed:
-  - **Atmospheric Copy**: Replaced clinical "No destinations found" with the more evocative, brand-aligned title: "The sanctuary remains hidden."
-  - **Poetic Tone**: Rewrote supportive descriptions to use editorial language (e.g., "did not reveal," "filters you have curated") instead of standard startup/SaaS terminology.
-  - **Visual Anchor**: Introduced a delicate horizontal bridge using gradient rules and a soft circular icon container, replacing the previously boxy shadow-based UI.
-  - **Simplified Hierarchy**: Removed the "Suggestions" container box. Tips are now integrated as a subtle, italicized text block, reducing visual complexity.
-  - **Refined CTA**: Replaced the loud solid-gold primary button with a sophisticated secondary button style (glass-like surface, hairline border) and added a subtle micro-interaction to the rotate icon.
-  - **Editorial Spacing**: Increased vertical padding (`py-24` to `py-32`) to allow the empty state to function as a breathable editorial moment rather than just an error message.
-  - **Typography**: Applied serif headers and refined font weights (`font-light`) for a high-end magazine feel.
-- Files:
-  - `components/ui/EmptyState.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The "Clear all curations" action preserves the existing reset behavior while using more elegant labeling.
-
-### 2026-05-07 — Cinematic Reveal Animation System
-
-- Changed:
-  - **Core Reveal Component**: Created `components/ui/SectionReveal.tsx` — a reusable Framer Motion wrapper designed for "expensive silence." It uses a custom luxury cubic-bezier (`[0.16, 1, 0.3, 1]`) and slow durations (`0.8s-0.9s`).
-  - **Staggered Entry**: Implemented `staggerChildren` logic to allow cards and grid items to enter sequentially, enhancing the premium "curated gallery" feel.
-  - **Section Application**: Integrated the system into `FeaturedDestinations`, `StatsSection`, and `WhyChooseUs`.
-  - **Typographic Sync**: While applying motion, I also refined the typography and spacing in these sections:
-    - Replaced generic circular dot labels with editorial hairline dividers (`h-px w-8`).
-    - Switched to `font-medium` and `font-light` weights for headlines and body text respectively.
-    - Standardized all-caps small labels to `text-[0.65rem]` or `text-[0.7rem]` with high tracking (`tracking-[0.2em]`).
-    - Increased vertical section spacing and card gaps for better editorial air.
-- Files:
-  - `components/ui/SectionReveal.tsx`
-  - `components/home/FeaturedDestinations.tsx`
-  - `components/home/StatsSection.tsx`
-  - `components/home/WhyChooseUs.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The motion system is deliberately "quiet." It avoids bounce, overshoot, or fast speeds to maintain Aurora's calm, immersive atmosphere.
-
-### 2026-05-07 — Destination Card Interaction Refinement
-
-- Changed:
-  - **Subtle Lift**: Reduced card translation on hover from `-1px` to `-0.5px` for a more grounded, premium feel.
-  - **Atmospheric Shadow**: Switched to a softer, more expansive shadow (`rgba(0.08)`) that creates depth without harshness.
-  - **Cinematic Zoom**: Slowed the image zoom to `duration-700` with a `1.03` scale for a more immersive editorial experience.
-  - **Dynamic Depth**: Implemented a transition on the image overlay that deepens slightly on hover to enhance label clarity.
-  - **Micro-interactions**: Added subtle directional shifts to badges and ratings (Region, Budget, Rating) to make the card feel alive and responsive.
-  - **Synchronized Rhythm**: Standardized all hover transitions to a slow `duration-500/700` pace, matching the "expensive silence" motion philosophy.
-  - **Typographic Polish**: Applied `font-light` to the card description for better editorial hierarchy.
-- Files:
-  - `components/ui/DestinationCard.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The interactions are designed to feel "smooth and heavy" rather than "snappy and light," aligning with luxury editorial standards.
-
-### 2026-05-07 — Cinematic Heading Reveal Motion
-
-- Changed:
-  - **Blur-in Support**: Enhanced `SectionReveal` with a `blur` property, implementing a subtle `blur(4px)` to `blur(0px)` transition. This mimics a cinematic lens focus pull, adding a layer of premium atmosphere.
-  - **Heading Polish**: Applied the blur-in reveal specifically to the major section headers on the Home page (`FeaturedDestinations`, `WhyChooseUs`).
-  - **Immersive Hero Entry**: Integrated the blur-in and staggered reveal into the Destination Detail Hero. The large serif title and metadata now emerge from a soft focus, creating a high-end editorial introduction.
-  - **Refined Timing**: Heading reveals are set to a slightly longer `1.2s` duration compared to the standard `0.9s`, allowing the typography to feel more authoritative and calm.
-- Files:
-  - `components/ui/SectionReveal.tsx`
-  - `components/home/FeaturedDestinations.tsx`
-  - `components/home/WhyChooseUs.tsx`
-  - `app/destinations/[id]/page.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - Motion is strictly limited to major headings and section entries. Body text remains mostly static to ensure maximum readability and accessibility.
-
-### 2026-05-07 — Aurora AI Concierge Entry (V2 Teaser)
-
-- Changed:
-  - **Premium Floating Entry**: Created `components/ai/AuroraAssistantButton.tsx` — a persistent floating anchor at the bottom-right of the platform.
-  - **Atmospheric Visuals**: Implemented a slow "breathing" gold glow using `blur-xl` and `opacity` cycles to signal the AI's presence in a quiet, non-obtrusive way.
-  - **Editorial Expandable Label**: Added a high-tracking all-caps "Ask Aurora" label that smoothly expands on hover, matching the platform's typographic rhythm.
-  - **Coming Soon Interaction**: Clicking the button reveals a refined, glassmorphic teaser card that frames the AI concierge as a "curator of stillness," building brand narrative for the upcoming V2 release.
-  - **Global Integration**: Added the component to `RootLayout` (`app/layout.tsx`) so it remains accessible across all destination pages and editorial collections.
-- Files:
-  - `components/ai/AuroraAssistantButton.tsx`
-  - `app/layout.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The component is fully responsive, moving to `bottom-6` on mobile and `bottom-10` on desktop to avoid overlapping with navigation elements.
-
-### 2026-05-07 — Aurora AI Concierge Panel (UI V1)
-
-- Changed:
-  - **Luxury Conversational UI**: Created `components/ai/AuroraConciergePanel.tsx` — a high-end side-drawer interface for the AI travel assistant.
-  - **Editorial Layout**: Replaced traditional "chat bubbles" with a minimalist, letter-like conversational flow using serif headers and light body typography.
-  - **Curated Starter Prompts**: Implemented a set of brand-aligned discovery prompts ("Suggest a quiet mountain sanctuary," etc.) to guide user intent.
-  - **Simulated "Stillness"**: Added a deliberate 1.5s delay with a soft pulsing indicator for assistant responses to mimic a thoughtful concierge pace.
-  - **Atmospheric Design**: The panel uses the Aurora cream palette (`#F7F3EC`) with gold-tinted accents and generous internal padding (`p-8`).
-  - **State Integration**: Connected the `AuroraAssistantButton` to trigger the new panel, replacing the previous "Coming Soon" teaser.
-- Files:
-  - `components/ai/AuroraConciergePanel.tsx`
-  - `components/ai/AuroraAssistantButton.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - The concierge currently operates on mock responses (`MOCK_RESPONSES`) to demonstrate the UX vision without requiring an active API connection.
-
-### 2026-05-07 — AI Concierge Copy & Intent Refinement
-
-- Changed:
-  - **Brand-Aligned Starter Prompts**: Redesigned the conversational entry points to focus on emotional and high-value intents:
-    - *Peaceful Escapes*: "Suggest a sanctuary for true stillness"
-    - *Luxury Travel*: "Recommend a retreat of unparalleled refinement"
-    - *Cultural Journeys*: "Guide me toward a journey of heritage and tradition"
-    - *Budget-Aware*: "Curate a quiet escape within a modest budget"
-    - *Hidden Gems*: "Show me a landscape few have wandered"
-  - **Editorial Mock Responses**: Updated the assistant's feedback logic to use poetic, descriptive language that mirrors the platform's editorial voice (e.g., describing "mist-covered peaks" and "limestone karsts").
-  - **Human-Centric Copy**: Removed robotic or functional "AI" phrasing in favor of a warm, concierge-like tone.
-- Files:
-  - `components/ai/AuroraConciergePanel.tsx`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
-  - npm run lint: pass
-- Notes:
-  - These prompts serve as the emotional "hook" for the conversational experience, helping users understand the platform's focus on stillness and curation.
-
-### 2026-05-07 — AI Concierge Strategic Planning
-
-- Created:
-  - **Strategic Blueprint**: Authored `docs/ai-concierge-plan.md` to define the future of Aurora's AI assistant.
-  - **Personality Definition**: Formalized the "Editorial Concierge" persona—patient, descriptive, and restrained.
-  - **Architecture Roadmap**: Recommended an **API-First + RAG** approach to leverage state-of-the-art reasoning (Gemini/GPT) without the overhead of custom model training.
-  - **Philosophy Alignment**: Established the "Curation over Volume" rule, ensuring the AI prioritizes emotional fit over generic marketplace listings.
-- Files:
-  - `docs/ai-concierge-plan.md`
-  - `.cursor/context/aurora-progress.md`
-- Notes:
-  - This document serves as the "North Star" for all future backend and AI integration work, ensuring technology serves the Aurora brand aesthetic.
-
-### 2026-05-07 — Brand Design Philosophy Formalization
-
-- Created:
-  - **Design North Star**: Authored `docs/design-philosophy.md` to permanently document Aurora’s visual and emotional standards.
-  - **Quiet Luxury Framework**: Defined the principles of "Expensive Silence," "Editorial Rhythm," and "Cinematic Motion."
-  - **Anti-Brand Guidelines**: Explicitly listed what to avoid (SaaS UI, neons, aggressive CTAs) to prevent brand drift in future iterations.
-  - **Typographic & Color Standards**: Codified the use of `font-serif`, `font-light`, and the Aurora Cream palette as non-negotiable brand elements.
-- Files:
-  - `docs/design-philosophy.md`
-  - `.cursor/context/aurora-progress.md`
-- Notes:
-  - This document is intended as mandatory reading for any future AI agents or developers contributing to the Aurora UI.
-
-### 2026-05-07 — Typography System Enhancement & Multilingual Intelligence
-
-- Changed:
-  - **Multilingual Intelligence System**: Added a comprehensive Typography System section to `SKILLS.md`, defining separate editorial rules for Vietnamese and English content.
-  - **Vietnamese Readability Pass**: Mandated `leading-relaxed` line-height and avoided excessive tracking for Vietnamese text to ensure diacritic clarity and reading comfort.
-  - **Font System Upgrade**: Switched the primary Serif heading font from `Playfair Display` to **Lora** in `globals.css` and `tailwind.config.js` to ensure superior native Vietnamese diacritic rendering.
-  - **Cinematic Philosophy**: Codified the typography philosophy (cinematic, editorial, luxury, calm, readable, restrained) to guide future AI and human contributors.
-- Files:
-  - `SKILLS.md`
-  - `app/globals.css`
-  - `tailwind.config.js`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
+  - `data/destinations.ts`
+  - `types/index.ts`
+- **Checks**:
   - npm run lint: pass
   - npm run build: pass
-- Notes:
-  - **Lora** was selected for its exceptional balance of luxury editorial aesthetic and robust Vietnamese glyph support, resolving previous "glitchy" rendering issues with some serif families.
+- **Design Reasoning**: Information should not feel like an interruption. By integrating the "Facts" into the editorial flow with refined typography and generous spacing, we maintain the platform's immersive, calm atmosphere.
 
-### 2026-05-07 — Font Loading Optimization
+### 2026-05-07 — Journey Rhythm Refinement (Atmosphere & Motion Pass)
 
-- Changed:
-  - **CSS Standards Compliance**: Moved Google Fonts `@import` rules to the absolute top of `app/globals.css`, ensuring compliance with CSS specifications (imports must precede other rules).
-- Files:
-  - `app/globals.css`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
+- **Refined**:
+  - **Calm Storytelling**: Elevated the narrative flow by increasing vertical spacing and adding a subtle "Narrative of Light" background gradient that simulates the day cycle.
+  - **Restrained Motion**: Replaced large vertical displacements with minimal `y=10` reveals and blur-ins to maintain "Expensive Silence."
+  - **Cinematic Imagery**: Implemented a "Focus-Pull" effect where images start with a soft blur and resolve slowly over 4000ms.
+  - **Integrated UI**: Redesigned the time indicators as minimal, integrated elements within the cinematic window rather than floating badges.
+  - **Typography Maturity**: Switched to lighter font weights and more generous tracking for metadata, enhancing the "magazine that breathes" feel.
+- **Files**:
+  - `components/ui/JourneyRhythm.tsx`
+- **Checks**:
   - npm run lint: pass
-- Notes:
-  - This fix resolves IDE/editor warnings regarding `@import` placement while maintaining the intended typography system (Inter & Lora).
+  - npm run build: pass (after cache clear)
 
-### 2026-05-07 — globals.css Syntax & Import Optimization (Final)
+### 2026-05-07 — "Journey Rhythm" Section Implementation
 
-- Changed:
-  - **Absolute Import Placement**: Moved Google Fonts `@import` rules to the absolute first lines of `app/globals.css`, preceding all comments and `@tailwind` directives. This ensures 100% compliance with CSS specifications where `@import` must be at the top.
-  - **Vertical Rhythm Cleanup**: Consolidated vertical spacing and removed unnecessary newlines within `@layer` blocks to improve maintainability and professional formatting.
-  - **Directives Verification**: Confirmed that `@tailwind base`, `@tailwind components`, and `@tailwind utilities` are correctly ordered and unencumbered by syntax errors.
-- Files:
-  - `app/globals.css`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
+- **Changed**:
+  - **Cinematic Time-Flow**: Designed and implemented the "Journey Rhythm" section, a time-driven narrative structure (Morning → Afternoon → Golden Hour → Evening).
+  - **Editorial Layout**: Used an asymmetrical, alternating grid with large serif typography and staggered reveals to create an immersive, unhurried pacing.
+  - **Atmospheric Visuals**: Integrated slow-motion image zooms and subtle time-based icons (Sunrise, Sun, Sunset, Moon) to evoke the changing light of a day.
+  - **Data Schema Expansion**: Updated the `Destination` interface and `data/destinations.ts` to include curated journey rhythm data for key destinations like Vịnh Hạ Long.
+- **Files**:
+  - `components/ui/JourneyRhythm.tsx` [NEW]
+  - `app/destinations/[id]/page.tsx`
+  - `data/destinations.ts`
+  - `types/index.ts`
+- **Checks**:
   - npm run lint: pass
   - npm run build: pass
-- Notes:
-  - Any remaining editor highlights are likely due to the editor's interpretation of Tailwind-specific `@tailwind` directives as standard CSS rules. The build and lint pass verify that the code is technically correct and production-ready.
+- **Design Reasoning**: Luxury is about the rhythm of experience. By structuring the journey through the lens of light and time rather than a checklist, we emphasize the "quiet luxury" and "expensive silence" that defines Aurora.
+
+### 2026-05-07 — Documentation & Memory Refactoring (AI Scalability Pass)
+- **Refactored**: `aurora-progress.md` into a high-level operational journal with dedicated architecture and debt sections.
+- **Created**: `docs/` architecture library:
+  - `architecture-overview.md`: High-level system map.
+  - `frontend-architecture.md`: Styling and component standards.
+  - `ai-concierge-architecture.md`: RAG and LLM integration strategy.
+  - `backend-roadmap.md`: Modular backend planning.
+  - `database-strategy.md`: PostgreSQL + Prisma roadmap.
+  - `deployment-strategy.md`: CI/CD and hosting standards.
+  - `technical-debt.md`: Tracking logic and design debt.
+  - `ai-collaboration-standards.md`: Token optimization and protocol rules.
+- **Updated**: `README.md` and `.gitignore` for cleaner project onboarding.
+- **Checks**: 
+  - npm run lint: pass
+  - npm run build: pass
 
 ### 2026-05-07 — Typography Philosophy Refinement & Vietnamese Readability
+- **Changed**: Refined the typography philosophy in `SKILLS.md` to prioritize content clarity (Inter) for card titles and compact UI.
+- **Files**: `components/ui/DestinationCard.tsx`, `SKILLS.md`.
+- **Note**: Resolves "awkward" serif rendering for names like "Phú Quốc."
 
-- Changed:
-  - **Readability-First Architecture**: Refined the typography philosophy in `SKILLS.md` to prioritize content clarity over decorative styling, especially for Vietnamese-heavy interfaces.
-  - **Component Typography Pass**: Updated `DestinationCard.tsx` to use **Sans-serif (Inter)** for destination titles (e.g., "Phú Quốc"). This ensures that complex diacritics and character spacing remain clean and legible in compact layouts.
-  - **Serif Usage Boundaries**: Codified that **Serif (Lora)** is strictly reserved for large cinematic moments, Hero sections, and spacious editorial titles, while **Sans-serif (Inter)** is the standard for practical UI, cards, and metadata.
-  - **Multilingual Editorial Rules**: Added explicit guidelines for handling Vietnamese diacritics, including mandatory `leading-relaxed` line-height and `font-medium/semibold` weights for better contrast.
-- Files:
-  - `components/ui/DestinationCard.tsx`
-  - `SKILLS.md`
-  - `.cursor/context/aurora-progress.md`
-- Checks:
+### 2026-05-07 — globals.css Syntax & Import Optimization
+- **Changed**: Moved `@import` to absolute top for CSS spec compliance.
+- **Files**: `app/globals.css`.
+
+### 2026-05-07 — Typography System Enhancement & Multilingual Intelligence
+- **Changed**: Added comprehensive Typography System to `SKILLS.md`. Switched from `Playfair Display` to `Lora`.
+
+### 2026-05-07 — AI Concierge Strategic Planning & UI V1
+- **Created**: `docs/ai-concierge-plan.md`, `components/ai/AuroraConciergePanel.tsx`.
+- **Note**: Established the "Editorial Concierge" persona.
+
+### 2026-05-07 — Cinematic Reveal & Motion Refinement
+- **Created**: `SectionReveal.tsx`.
+- **Changed**: Integrated luxury easing and blur-in focus pull across home sections.
+
+### 2026-05-06 — Branding migration and Hero redesign
+- **Changed**: Removed loud video elements. Committed to "Expensive Silence" static editorial Hero.
+- **Branding**: Replaced VietTravel with Aurora across all major UI surfaces.
+
+### 2026-05-07 — "Signature Moments" Layout & Motion Implementation
+
+- **Changed**:
+  - **Memory-Driven Composition**: Designed and implemented a new "Signature Moments" section in `app/destinations/[id]/page.tsx`. This section focuses on sensory, atmospheric experiences using a spacious, minimalist grid layout.
+  - **Atmospheric Visuals**: Integrated high-quality, mood-driven images for each moment, using `next/image` with a slow reveal effect.
+  - **Subtle Cinematic Motion**:
+    - **Gentle Hover**: Implemented a slow, 1500ms `ease-out` scale transition on images (`scale-110`) and a soft color shift on titles.
+    - **Slow Reveal**: Images fade in with a subtle atmospheric overlay that recedes on hover, following the "Expensive Silence" principle.
+    - **Staggered Entrance**: Leveraged `SectionReveal` to ensure individual moments emerge gracefully as the user scrolls.
+  - **Elegant Spacing & Typography**: Utilized a centered container with generous vertical padding (**py-32**) and refined serif typography for moment titles. Large, italicized numbering (`text-3xl`, `white/40`) adds a premium, unhurried feel.
+  - **Data Schema Evolution**: Expanded the `Destination` interface and `data/destinations.ts` to include curated moment titles, descriptions, and atmospheric images.
+- **Files**:
+  - `app/destinations/[id]/page.tsx`
+  - `data/destinations.ts`
+  - `types/index.ts`
+- **Checks**:
   - npm run lint: pass
   - npm run build: pass
-- Notes:
-  - This shift resolves "awkward" serif rendering for Vietnamese names like "Phú Quốc" in smaller UI elements, reinforcing Aurora's commitment to both high-end design and absolute usability.
+- **Design Reasoning**: Luxury is communicated through the pacing of interaction. By using extremely slow transitions and atmospheric visuals, we invite the user to linger on each "moment," reinforcing the platform's editorial depth.
+
+- **Changed**:
+  - **Poetic Narrative Overhaul**: Completely rewrote the descriptions and long descriptions for all 10 destinations in `data/destinations.ts`. Moved away from generic "marketing" language (e.g., "amazing views," "best place") toward a poetic, cinematic tone that emphasizes atmosphere, heritage, and stillness.
+  - **Vietnamese Editorial Vocabulary**: Used sophisticated, literary-grade Vietnamese (văn phong editorial cao cấp) to evoke the sense of a high-end luxury magazine like *Condé Nast Traveler* or *Aman Journal*.
+  - **Curated Experience Highlights**: Refined the "Highlights" for each destination to feel like curated experiences (e.g., "Du thuyền tĩnh lặng giữa mê cung đá vôi") rather than a simple checklist of tourist spots.
+  - **"Expensive Silence" in Writing**: Maintained a calm, restrained tone throughout, avoiding exclamation marks and aggressive hype to align with the Aurora brand philosophy.
+- **Files**:
+  - `data/destinations.ts`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Tone is an essential part of the user experience. By using evocative, cinematic language, we reinforce the "Aurora" brand as a platform for discerning travelers who value atmosphere and depth over marketplace-style convenience.
+
+### 2026-05-07 — Destination Detail Editorial Introduction Refinement
+
+- **Changed**:
+  - **Editorial Standfirst**: Elevated the destination description to a "standfirst" using **Lora** (Serif) with `text-3xl` and `leading-[1.4]`. This creates a high-contrast editorial hook that transitions from the hero into the main narrative.
+  - **Reading Comfort Optimization**: Constrained the main body copy to `max-w-2xl` and increased vertical padding to **py-32** (lg). This ensures an unhurried, comfortable reading experience aligned with luxury editorial standards.
+  - **Visual Rhythm**: Integrated a refined "Aurora Narrative" mark with a gold gradient rule to bridge the transition from the cinematic hero to the storytelling section.
+  - **Editorial Ledger**: Redesigned the highlights as a "Numbered Editorial Ledger" using italicized serif numbering and generous spacing, moving away from standard bullet points.
+  - **Atmospheric Background**: Applied the `F7F3EC` luxury cream background to the entire content section to maintain branding consistency and "quiet luxury."
+- **Files**:
+  - `app/destinations/[id]/page.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Editorial design is about pacing. The transition from a monumental hero to a centered, unhurried reading column respects the reader's focus and emphasizes the storytelling aspect of the Aurora platform.
+### 2026-05-07 — Destination Detail Hero Refinement (Cinematic Motion Pass)
+
+- **Changed**:
+  - **Atmospheric Background Motion**: Created `HeroBackground.tsx` to handle a very slow, immersive fade-in and scale-down (1.1 → 1.05) on the hero image. This creates a "settling" cinematic effect that anchors the viewer.
+  - **Layered Overlay Entrance**: Created `HeroOverlay.tsx` to stagger the atmospheric scrims and vignettes with a 0.4s delay, adding a sense of unfolding depth to the scene.
+  - **Refined Typography Stagger**:
+    - **Breadcrumb**: Isolated in its own `SectionReveal` with a 0.8s delay and minimal `y=10` movement for a delicate entry.
+    - **Content Group**: Reconfigured the main `SectionReveal` to start at 1.1s, using a slower stagger and cinematic blur to present the monumental title and mood description.
+  - **Monumental Typography & Composition**: Maintained the monumental **7rem** title scale and structured editorial data grid.
+  - **Editorial Film Treatment**: Preserved the high-contrast, slightly desaturated "expensive film" look on hero images.
+- **Files**:
+  - `app/destinations/[id]/page.tsx`
+  - `components/ui/HeroMotion.tsx`
+- **Checks**:
+  - npm run lint: pass
+  - npm run build: pass
+- **Design Reasoning**: Motion is used as a narrative tool, not decoration. The slow, staggered entrance mimics the experience of eyes adjusting to a beautiful landscape, following the "Apple restraint + Aman calmness" philosophy.

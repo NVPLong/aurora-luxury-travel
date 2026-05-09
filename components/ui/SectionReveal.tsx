@@ -25,7 +25,7 @@ export default function SectionReveal({
   children,
   className = '',
   delay = 0,
-  y = 20,
+  y = 15,
   staggerChildren = false,
   blur = false
 }: SectionRevealProps) {

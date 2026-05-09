@@ -16,6 +16,10 @@ import { BUDGET_COLORS } from '@/constants/filters'
 import { getRatingColor, formatReviewCount } from '@/lib/utils'
 import { MapPin, Compass, WalletCards, CalendarDays, Clock3, ArrowLeft, Sparkles } from 'lucide-react'
 import SectionReveal from '@/components/ui/SectionReveal'
+import { HeroBackground, HeroOverlay } from '@/components/ui/HeroMotion'
+import JourneyRhythm from '@/components/ui/JourneyRhythm'
+import QuietFacts from '@/components/ui/QuietFacts'
+import ContinueExploring from '@/components/ui/ContinueExploring'
 
 // ----------------------------------------------------------------
 // Props – Next.js 15 truyền params dưới dạng Promise
@@ -63,6 +67,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
     name, location, region, category, budget,
     rating, reviewCount, image, description,
     longDescription, highlights, bestTime, duration,
+    signatureMoments, journeyRhythm
   } = destination
 
   return (
@@ -71,65 +76,89 @@ export default async function DestinationDetailPage({ params }: PageProps) {
       {/* ============================================================
           HERO – cinematic full-image, editorial title overlay
       ============================================================ */}
-      <section className="relative h-[70vh] min-h-[460px] overflow-hidden">
-        <Image
-          src={image}
-          alt={`${name} — Aurora destination`}
-          fill
-          priority                    // Ưu tiên load ảnh này (LCP optimization)
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+      <section className="relative h-[85vh] lg:h-[90vh] min-h-[600px] overflow-hidden bg-slate-950">
+        <HeroBackground>
+          <Image
+            src={image}
+            alt={`${name} — Aurora destination`}
+            fill
+            priority                    // Ưu tiên load ảnh này (LCP optimization)
+            className="object-cover object-center brightness-[0.92] contrast-[1.08] saturate-[0.95]" // Editorial film treatment
+            sizes="100vw"
+          />
+        </HeroBackground>
 
-        {/* Multi-layer gradient: base darkness + bottom text anchor + subtle left anchor */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(4,10,16,0.82)] via-[rgba(4,10,16,0.22)] to-[rgba(4,10,16,0.08)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(4,10,16,0.30)] via-transparent to-transparent" />
+        {/* Multi-layer atmospheric stack: Expensive Silence approach */}
+        <HeroOverlay delay={0.4}>
+          {/* Layer 1: Global Vignette – pulls focus to the center/content */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_20%,rgba(15,18,24,0.35)_100%)]" />
+          
+          {/* Layer 2: Content Anchor – linear gradient for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[rgba(15,18,24,0.92)] via-[rgba(15,18,24,0.35)] to-transparent" />
+          
+          {/* Layer 3: Atmospheric Depth – soft bottom-to-top scrim */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,18,24,0.50)] via-transparent to-transparent" />
+        </HeroOverlay>
 
-        {/* Nội dung trên ảnh: breadcrumb + eyebrow + tên + meta */}
-        <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 pb-10 sm:pb-16">
-          <div className="max-w-5xl mx-auto">
+        {/* Nội dung trên ảnh: breadcrumb + eyebrow + tên + mood + meta */}
+        <div className="absolute inset-0 flex flex-col justify-end">
+          <div className="max-w-6xl mx-auto w-full px-6 sm:px-10 pb-16 lg:pb-24">
+            
+            <SectionReveal blur delay={0.8} y={15}>
+              {/* Breadcrumb – gallery label style */}
+              <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-[0.6rem] tracking-[0.3em] uppercase text-white/35 mb-10 sm:mb-16">
+                <Link href="/" className="hover:text-white/80 transition-colors duration-400">Home</Link>
+                <span aria-hidden="true" className="w-4 h-px bg-white/10"></span>
+                <Link href="/destinations" className="hover:text-white/80 transition-colors duration-400">Collection</Link>
+                <span aria-hidden="true" className="w-4 h-px bg-white/10"></span>
+                <span className="text-white/70">{name}</span>
+              </nav>
+            </SectionReveal>
 
-            {/* Breadcrumb – nhỏ, mờ, không cạnh tranh với tên */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase text-white/45 mb-5">
-              <Link href="/" className="hover:text-white/75 transition-colors duration-200">Home</Link>
-              <span aria-hidden="true">—</span>
-              <Link href="/destinations" className="hover:text-white/75 transition-colors duration-200">Destinations</Link>
-              <span aria-hidden="true">—</span>
-              <span className="text-white/70">{name}</span>
-            </nav>
+            <SectionReveal blur staggerChildren delay={1.1} y={15}>
+              {/* Eyebrow: cinematic category label */}
+              <div className="flex items-center gap-5 mb-8">
+                <span className="h-px w-12 bg-gradient-to-r from-[color:#C8A96A] to-transparent"></span>
+                <p className="text-[color:#C8A96A] text-[0.65rem] tracking-[0.45em] uppercase font-medium">
+                  {category} · {region}
+                </p>
+              </div>
 
-            {/* Eyebrow: category · region in gold */}
-            <p className="text-[color:#C8A96A] text-[0.65rem] tracking-[0.3em] uppercase mb-4 font-light">
-              {category}&ensp;·&ensp;{region}
-            </p>
-
-            {/* Tên địa điểm – lớn, nhẹ, cinematic */}
-            <SectionReveal blur staggerChildren delay={0.2}>
-              <h1 className="text-[2.8rem] sm:text-5xl lg:text-[3.75rem] font-medium text-white leading-[1.06] font-serif tracking-[-0.015em] mb-6">
+              {/* Tên địa điểm – monumental cinematic serif */}
+              <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-serif font-medium text-white leading-[0.98] tracking-[-0.02em] mb-10">
                 {name}
               </h1>
 
-              {/* Meta row: location + rating + budget */}
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                <span className="flex items-center gap-1.5 text-white/65 text-sm">
-                  <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  {location}
-                </span>
+              {/* Mood description – evocative sub-headline */}
+              <p className="text-white/75 text-lg lg:text-xl font-normal font-sans max-w-xl leading-relaxed mb-12 lg:mb-16">
+                Discover the quiet rhythm of {location}, where landscapes breathe with heritage and every moment invites stillness.
+              </p>
 
-                <span aria-hidden="true" className="text-white/20 hidden sm:inline text-sm">|</span>
+              {/* Meta row: structured editorial data */}
+              <div className="flex flex-wrap items-center gap-10 lg:gap-16 pt-12 border-t border-white/10">
+                <div className="flex flex-col gap-2.5">
+                  <span className="text-white/30 text-[0.55rem] uppercase tracking-[0.35em] font-sans font-medium">Location</span>
+                  <span className="flex items-center gap-2 text-white/90 text-sm font-sans tracking-wide">
+                    <MapPin className="h-3.5 w-3.5 text-[color:#C8A96A] opacity-80" aria-hidden="true" />
+                    {location}
+                  </span>
+                </div>
 
-                <span className={`font-semibold text-sm ${getRatingColor(rating)}`}>
-                  ★ {rating}
-                </span>
-                <span className="text-white/45 text-xs">
-                  {formatReviewCount(reviewCount)} reviews
-                </span>
+                <div className="flex flex-col gap-2.5">
+                  <span className="text-white/30 text-[0.55rem] uppercase tracking-[0.35em] font-sans font-medium">Curated Rating</span>
+                  <div className="flex items-center gap-3">
+                    <span className={`text-sm font-medium font-sans ${getRatingColor(rating)}`}>★ {rating}</span>
+                    <span className="text-white/30 text-[0.6rem] font-sans tracking-wider">({formatReviewCount(reviewCount)} reviews)</span>
+                  </div>
+                </div>
 
-                {/* Budget badge – far right on desktop */}
-                <span className={`ml-auto hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${BUDGET_COLORS[budget]}`}>
-                  <WalletCards className="h-3 w-3" aria-hidden="true" />
-                  {budget}
-                </span>
+                <div className="flex flex-col gap-2.5 sm:ml-auto">
+                  <span className="text-white/30 text-[0.55rem] uppercase tracking-[0.35em] font-sans font-medium">Budget Category</span>
+                  <span className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[0.6rem] tracking-[0.15em] uppercase font-semibold border border-white/5 backdrop-blur-md ${BUDGET_COLORS[budget]}`}>
+                    <WalletCards className="h-3 w-3" aria-hidden="true" />
+                    {budget}
+                  </span>
+                </div>
               </div>
             </SectionReveal>
           </div>
@@ -137,137 +166,182 @@ export default async function DestinationDetailPage({ params }: PageProps) {
       </section>
 
       {/* ============================================================
-          CONTENT – editorial 2-column layout
+          CONTENT – editorial storytelling & curated details
       ============================================================ */}
-      <section className="py-16 lg:py-24 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-32 lg:py-48 px-4 sm:px-6 bg-[color:#F7F3EC]">
+        <div className="max-w-6xl mx-auto">
 
-          {/* Mobile back link – visible only on small screens, above the grid */}
-          <div className="lg:hidden mb-10">
+          {/* Mobile back link – subtle navigation */}
+          <div className="lg:hidden mb-12">
             <Link
               href="/destinations"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-800 text-sm transition-colors duration-200"
+              className="inline-flex items-center gap-3 text-slate-400 hover:text-slate-600 text-[0.7rem] uppercase tracking-widest transition-colors duration-300"
             >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-              All destinations
+              <ArrowLeft className="h-3 w-3" aria-hidden="true" />
+              Back to Collection
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20">
+          <div className="flex flex-col space-y-20 lg:space-y-32">
+            
+            {/* === Quiet Facts Bar === */}
+            <QuietFacts destination={destination} />
 
-            {/* === Cột trái: Nội dung chính (chiếm 2/3) === */}
-            <div className="lg:col-span-2 space-y-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24">
 
-              {/* ── Standfirst / Short description ──
-                  Dùng trường `description` ngắn như một "deck" – câu mở đầu ấn tượng
-                  trước khi vào bài viết dài hơn. Kiểu editorial magazine. */}
-              <div>
-                {/* Thin gold accent rule — visual bridge from hero */}
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="h-px flex-1 bg-gradient-to-r from-[color:#C8A96A]/60 to-transparent" aria-hidden="true" />
-                  <span className="text-[color:#C8A96A] text-[0.6rem] tracking-[0.3em] uppercase font-light shrink-0">
-                    Aurora Collection
-                  </span>
+              {/* === Cột trái: Editorial Main Story (2/3) === */}
+              <div className="lg:col-span-2 space-y-20 lg:space-y-28">
+
+                {/* ── Editorial Intro ── */}
+                <div className="max-w-2xl">
+                  {/* Visual bridge: refined editorial mark */}
+                  <div className="flex items-center gap-6 mb-12">
+                    <span className="h-px w-12 bg-[color:#C8A96A]/40" aria-hidden="true" />
+                    <span className="text-[color:#C8A96A] text-[0.62rem] tracking-[0.4em] uppercase font-medium shrink-0">
+                      Aurora Narrative
+                    </span>
+                  </div>
+
+                  {/* Standfirst: The editorial hook (Serif) */}
+                  <p className="text-slate-800 text-2xl sm:text-3xl font-serif leading-[1.4] mb-12 tracking-tight">
+                    {description}
+                  </p>
+
+                  {/* Full editorial body text (Sans) */}
+                  <div className="space-y-8">
+                    {longDescription.split('\n\n').map((para, i) => (
+                      <p key={i} className="text-slate-600 text-base sm:text-lg leading-[1.85] font-light">
+                        {para.trim()}
+                      </p>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Lead / standfirst paragraph – emotionally hooks the reader */}
-                <p className="text-slate-800 text-lg sm:text-xl leading-[1.75] font-light mb-8 border-l-2 border-[color:#C8A96A]/40 pl-5">
-                  {description}
-                </p>
+                {/* ── Highlights: Numbered Editorial Ledger ── */}
+                <div className="max-w-2xl pt-16 border-t border-slate-200/60">
+                  <p className="text-[color:#5F7F78] text-[0.65rem] tracking-[0.3em] uppercase font-semibold mb-10">
+                    The Experience Highlights
+                  </p>
 
-                {/* Full editorial body text */}
-                <div className="space-y-6">
-                  {longDescription.split('\n\n').map((para, i) => (
-                    <p key={i} className="text-slate-600 text-[0.95rem] sm:text-base leading-[1.9] font-light">
-                      {para.trim()}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              {/* ── Highlights – numbered editorial list ── */}
-              <div>
-                <p className="text-[color:#5F7F78] text-[0.65rem] tracking-[0.28em] uppercase font-medium mb-7">
-                  Curated Highlights
-                </p>
-
-                {/* Danh sách dạng line – không phải card grid, nhìn editorial hơn */}
-                <ul className="divide-y divide-slate-100">
-                  {highlights.map((h, index) => (
-                    <li key={h} className="flex items-start gap-5 py-5 first:pt-0 last:pb-0">
-                      {/* Số thứ tự – gold, elegant */}
-                      <span className="shrink-0 text-[color:#C8A96A] font-light text-xs tracking-wider w-6 text-right pt-[0.2rem]">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className="text-slate-700 text-sm sm:text-[0.95rem] leading-[1.75]">
-                        {h}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* === Cột phải: Sidebar (1/3) === */}
-            <div className="space-y-4 lg:pt-0">
-
-              {/* Quick facts card */}
-              <div className="p-6 lg:p-7 bg-white/70 rounded-2xl border border-slate-100 shadow-[0_16px_50px_rgba(31,41,51,0.06)]">
-                <p className="text-[color:#5F7F78] text-[0.62rem] tracking-[0.28em] uppercase font-medium mb-5">
-                  Quick Facts
-                </p>
-
-                <div className="divide-y divide-slate-100/80">
-                  {[
-                    { label: 'Best Season',  value: bestTime,  icon: CalendarDays },
-                    { label: 'Duration',     value: duration,  icon: Clock3       },
-                    { label: 'Travel Style', value: category,  icon: Compass      },
-                    { label: 'Budget',       value: budget,    icon: WalletCards  },
-                    { label: 'Region',       value: region,    icon: MapPin       },
-                  ].map((info) => (
-                    <div key={info.label} className="flex items-start gap-3 py-3.5 first:pt-0 last:pb-0">
-                      <info.icon className="h-3.5 w-3.5 text-[color:#C8A96A] shrink-0 mt-[0.2rem]" aria-hidden="true" />
-                      <div>
-                        <p className="text-slate-400 text-[0.62rem] uppercase tracking-wider leading-none mb-1">
-                          {info.label}
-                        </p>
-                        <p className="text-slate-800 text-sm font-medium leading-snug">
-                          {info.value}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                  <ul className="space-y-0">
+                    {highlights.map((h, index) => (
+                      <li key={h} className="group flex items-start gap-8 py-7 border-b border-slate-100 last:border-0">
+                        <span className="shrink-0 text-[color:#C8A96A] font-serif italic text-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="text-slate-700 text-[0.95rem] sm:text-base leading-[1.8] font-normal pt-1">
+                          {h}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              {/* AI teaser – muted, secondary */}
-              <div className="p-5 bg-white/50 border border-slate-200/60 rounded-2xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="h-3.5 w-3.5 text-[color:#C8A96A]" aria-hidden="true" />
-                  <span className="text-slate-600 font-medium text-xs tracking-wide uppercase">
-                    AI Planning — Coming Soon
-                  </span>
-                </div>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Personalized itineraries tailored to your pace and preferences. Available in V2.
-                </p>
-              </div>
+              {/* === Cột phải: Sidebar (1/3) === */}
+              <div className="space-y-4 lg:pt-0">
 
-              {/* Nút quay lại – desktop only (mobile has top link) */}
-              <Link
-                href="/destinations"
-                className="hidden lg:flex items-center justify-center gap-2 w-full py-3 px-5
-                           bg-white/60 hover:bg-white/85 border border-slate-200/60
-                           text-slate-500 hover:text-slate-800 text-sm
-                           rounded-2xl transition-all duration-300 ease-out"
-              >
-                <ArrowLeft className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                All destinations
-              </Link>
+                {/* AI teaser – muted, secondary */}
+                <div className="p-6 bg-white/70 border border-slate-100 rounded-2xl shadow-[0_16px_50px_rgba(31,41,51,0.04)]">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Sparkles className="h-3.5 w-3.5 text-[color:#C8A96A]" aria-hidden="true" />
+                    <span className="text-slate-600 font-medium text-xs tracking-wider uppercase">
+                      Concierge AI
+                    </span>
+                  </div>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-6 font-light">
+                    Personalized itineraries tailored to your pace and preferences. Available in the next release.
+                  </p>
+                  <div className="h-px w-full bg-slate-100 mb-6" />
+                  <span className="text-[0.55rem] tracking-[0.2em] uppercase font-semibold text-slate-300">V2 Strategy</span>
+                </div>
+
+                {/* Nút quay lại – desktop only (mobile has top link) */}
+                <Link
+                  href="/destinations"
+                  className="hidden lg:flex items-center justify-center gap-3 w-full py-4 px-6
+                             bg-white/60 hover:bg-white/85 border border-slate-200/40
+                             text-slate-400 hover:text-slate-800 text-[0.7rem] uppercase tracking-widest
+                             rounded-2xl transition-all duration-300 ease-out"
+                >
+                  <ArrowLeft className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  Return to Collection
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ============================================================
+          JOURNEY RHYTHM – cinematic time-driven experiences
+      ============================================================ */}
+      {journeyRhythm && journeyRhythm.length > 0 && (
+        <JourneyRhythm rhythm={journeyRhythm} />
+      )}
+
+      {/* ============================================================
+          SIGNATURE MOMENTS – memory-driven atmospheric section
+      ============================================================ */}
+      {signatureMoments && signatureMoments.length > 0 && (
+        <section className="py-32 lg:py-48 px-4 sm:px-6 border-t border-slate-100 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <SectionReveal blur staggerChildren y={15}>
+              <div className="text-center mb-20 lg:mb-28">
+                <p className="text-[color:#C8A96A] text-[0.6rem] tracking-[0.45em] uppercase font-semibold mb-6">
+                  Signature Moments
+                </p>
+                <h2 className="text-3xl md:text-4xl font-serif text-slate-800 tracking-tight">
+                  Experiences that linger in memory
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-20 lg:gap-y-24">
+                {signatureMoments.map((moment, idx) => (
+                  <div key={idx} className="group flex flex-col">
+                    {/* Visual Container – subtle interactive window */}
+                    <div className="relative aspect-[4/3] mb-8 overflow-hidden rounded-2xl bg-slate-100">
+                      {moment.image ? (
+                        <Image
+                          src={moment.image}
+                          alt={moment.title}
+                          fill
+                          className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 40vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200" />
+                      )}
+                      {/* Atmospheric Overlay */}
+                      <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-700" />
+                    </div>
+
+                    <div className="flex flex-col px-1">
+                      <span className="text-[color:#C8A96A]/40 font-serif italic text-3xl mb-5 block">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="text-xl font-sans font-semibold text-slate-800 mb-4 tracking-tight group-hover:text-[color:#C8A96A] transition-colors duration-500">
+                        {moment.title}
+                      </h3>
+                      <p className="text-slate-500 text-[0.92rem] leading-[1.85] font-light max-w-[90%]">
+                        {moment.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================
+          CONTINUE EXPLORING – natural narrative discovery
+      ============================================================ */}
+      <ContinueExploring 
+        currentId={id} 
+        destinations={destinations} 
+      />
     </div>
   )
 }

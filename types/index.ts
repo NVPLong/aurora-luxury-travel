@@ -49,6 +49,19 @@ export interface Destination {
   bestTime: string        // Thời điểm tốt nhất để đến (VD: "Tháng 10 - 4")
   duration: string        // Thời gian khuyến nghị (VD: "3-5 ngày")
   featured: boolean       // true = hiển thị trên trang chủ
+  signatureMoments?: {    // [NEW] Khoảnh khắc đặc trưng – trải nghiệm cảm xúc
+    title: string
+    description: string
+    image?: string        // [NEW] Ảnh không gian/cảm xúc cho khoảnh khắc
+  }[]
+  journeyRhythm?: {       // [NEW] Nhịp điệu hành trình – trải nghiệm theo thời gian
+    time: 'Morning' | 'Afternoon' | 'Golden Hour' | 'Evening'
+    title: string
+    description: string
+    activity: string
+    image?: string
+  }[]
+  atmosphere?: string     // [NEW] Không khí/Cảm xúc chủ đạo (VD: "Tĩnh lặng, Huyền bí")
 }
 
 // ----------------------------------------------------------------

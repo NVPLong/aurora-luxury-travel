@@ -9,6 +9,7 @@ import HeroSection from '@/components/ui/HeroSection'
 import FeaturedDestinations from '@/components/home/FeaturedDestinations'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
 import StatsSection from '@/components/home/StatsSection'
+import ConciergeIntro from '@/components/ai/ConciergeIntro'
 
 // SEO metadata riêng cho trang chủ
 export const metadata: Metadata = {
@@ -28,7 +29,10 @@ export default function HomePage() {
       {/* 3. Thống kê ấn tượng */}
       <StatsSection />
 
-      {/* 4. Lý do chọn Aurora */}
+      {/* 4. AI Concierge Intro */}
+      <ConciergeIntro />
+
+      {/* 5. Lý do chọn Aurora */}
       <WhyChooseUs />
     </>
   )

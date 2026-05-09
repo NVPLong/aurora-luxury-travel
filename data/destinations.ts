@@ -24,20 +24,63 @@ export const destinations: Destination[] = [
     rating: 4.9,
     reviewCount: 12480,
     image: 'https://images.unsplash.com/photo-1761127138372-cad230082b19?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Di sản thiên nhiên thế giới với hàng nghìn hòn đảo đá vôi hùng vĩ, mặt biển xanh ngọc bích.',
-    longDescription: `Vịnh Hạ Long là một trong những kỳ quan thiên nhiên đẹp nhất thế giới, được UNESCO công nhận là Di sản Thiên nhiên Thế giới năm 1994. Với hơn 1.600 hòn đảo đá vôi lớn nhỏ nổi lên từ mặt nước xanh ngọc, Hạ Long tạo nên khung cảnh huyền ảo như tranh vẽ.
+    description: 'Một bản giao hưởng của đá và nước, nơi hàng nghìn hòn đảo vôi tĩnh lặng soi bóng xuống mặt biển ngọc bích.',
+    longDescription: `Giữa lòng vịnh Bắc Bộ, Hạ Long hiện ra như một bức tranh thủy mặc khổng lồ được tạc bằng những khối đá vôi nghìn năm tuổi. Không chỉ là một di sản, nơi đây là một trải nghiệm về sự tĩnh tại, nơi nhịp chèo khua nước hòa cùng tiếng gió luồn qua các hang động kỳ ảo.
 
-Du khách có thể tham gia các tour du thuyền qua đêm, khám phá hang động kỳ vĩ như hang Thiên Cung, hang Đầu Gỗ, hoặc tham gia chèo kayak quanh các đảo nhỏ. Làng chài Cửa Vạn là nơi tuyệt vời để trải nghiệm cuộc sống ngư dân trên biển.`,
+Hành trình tại Hạ Long là sự thưởng lãm nhịp sống chậm rãi trên những chuyến du thuyền sang trọng. Tại đây, thời gian như ngưng đọng khi ánh hoàng hôn buông xuống, nhuộm đỏ những dãy núi nhấp nhô và những làng chài dập dềnh trên sóng nước.`,
     highlights: [
-      'Hơn 1.600 hòn đảo đá vôi hùng vĩ',
-      'Du thuyền qua đêm trên vịnh',
-      'Khám phá hang động thiên nhiên',
-      'Chèo kayak qua các đảo nhỏ',
-      'Làng chài Cửa Vạn độc đáo',
+      'Du thuyền tĩnh lặng giữa mê cung đá vôi',
+      'Đón bình minh trên mặt biển sương mờ',
+      'Khám phá những hang động mang dấu ấn thời gian',
+      'Chèo kayak len lỏi qua các eo biển hoang sơ',
+      'Nhịp sống bình yên tại làng chài Cửa Vạn',
     ],
-    bestTime: 'Tháng 10 – 4 (tránh mùa mưa bão)',
+    bestTime: 'Tháng 10 – 4',
     duration: '2–3 ngày',
     featured: true,
+    signatureMoments: [
+      {
+        title: 'The Blue Hour',
+        description: 'Khi hoàng hôn tan vào biển, cả vùng vịnh chuyển mình sang sắc xanh huyền ảo, nơi ranh giới giữa trời và nước hoàn toàn biến mất.',
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        title: 'Sương sớm trên mạn thuyền',
+        description: 'Thức dậy giữa những làn sương mỏng tang đang len lỏi qua các khe núi, cảm nhận sự tĩnh lặng tuyệt đối của thiên nhiên.',
+        image: 'https://images.unsplash.com/photo-1559592442-9e813bd56616?auto=format&fit=crop&w=800&q=80'
+      }
+    ],
+    atmosphere: 'Tĩnh lặng, Huyền bí',
+    journeyRhythm: [
+      {
+        time: 'Morning',
+        title: 'Bình minh trên sóng biếc',
+        description: 'Khi những tia nắng đầu tiên len lỏi qua các đảo đá, mặt vịnh bừng sáng như một bức tranh thủy mặc vừa mới vẽ xong.',
+        activity: 'Tập Tai Chi trên mạn thuyền trong sương sớm',
+        image: 'https://images.unsplash.com/photo-1559592442-9e813bd56616?auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        time: 'Afternoon',
+        title: 'Khám phá lòng vịnh',
+        description: 'Dưới ánh mặt trời rạng rỡ, nước biển chuyển màu ngọc bích rực rỡ, mời gọi những cuộc viễn du vào sâu trong các hang động.',
+        activity: 'Chèo thuyền Kayak len lỏi qua các vòm đá',
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        time: 'Golden Hour',
+        title: 'Hơi thở của đá',
+        description: 'Khi mặt trời hạ thấp, những khối đá vôi khoác lên mình lớp áo vàng rực rỡ, tạo nên một không gian đầy mê hoặc.',
+        activity: 'Thưởng thức trà chiều và ngắm hoàng hôn',
+        image: 'https://images.unsplash.com/photo-1544013589-447e958cd89a?auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        time: 'Evening',
+        title: 'Sự tĩnh lặng tuyệt đối',
+        description: 'Đêm buông xuống, vịnh Hạ Long trở về với vẻ đẹp huyền bí, nơi chỉ còn tiếng sóng vỗ nhẹ và bầu trời đầy sao.',
+        activity: 'Bữa tối lãng mạn dưới ánh sao đêm',
+        image: 'https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&w=1200&q=80'
+      }
+    ],
   },
 
   {
@@ -50,20 +93,33 @@ Du khách có thể tham gia các tour du thuyền qua đêm, khám phá hang đ
     rating: 4.8,
     reviewCount: 9320,
     image: 'https://images.unsplash.com/photo-1753003491860-89b500bc62f3?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Thị trấn sương mù lãng mạn với những thửa ruộng bậc thang tuyệt đẹp và văn hóa dân tộc phong phú.',
-    longDescription: `Sa Pa là thị trấn miền núi nằm ở độ cao 1.500m so với mặt biển, thuộc tỉnh Lào Cai, cách Hà Nội khoảng 350km về phía Tây Bắc. Nơi đây nổi tiếng với những thửa ruộng bậc thang xanh mướt trải dài theo sườn núi — một trong những cảnh quan đẹp nhất Đông Nam Á.
+    description: 'Thị trấn trong sương, nơi những thửa ruộng bậc thang uốn lượn như những dải lụa mềm mại giữa đại ngàn.',
+    longDescription: `Nằm ở độ cao 1.500m, Sa Pa là nơi giao thoa giữa đất và trời, nơi sương mù len lỏi vào từng hơi thở của núi rừng Hoàng Liên Sơn. Những thửa ruộng bậc thang — tuyệt tác của bàn tay con người và thiên nhiên — vẽ nên những đường cong mềm mại trên sườn núi, thay sắc theo từng mùa lúa.
 
-Sa Pa còn là nơi sinh sống của nhiều dân tộc thiểu số như H'Mông, Dao Đỏ, Tày, Giáy với trang phục và phong tục tập quán độc đáo. Đây cũng là điểm xuất phát để chinh phục đỉnh Fansipan — "nóc nhà Đông Dương" cao 3.147m.`,
+Sức hút của Sa Pa nằm ở sự tĩnh lặng của những bản làng ẩn hiện trong mây và nét văn hóa rực rỡ của các dân tộc bản địa. Một cuộc hành trình đến Sa Pa là sự tìm về với những giá trị nguyên sơ và vẻ đẹp hùng vĩ của nóc nhà Đông Dương.`,
     highlights: [
-      'Ruộng bậc thang Mù Cang Chải, Tả Van',
-      'Chinh phục đỉnh Fansipan 3.147m',
-      'Chợ phiên dân tộc độc đáo',
-      'Trekking qua các bản làng',
-      'Cầu kính Rồng Mây ấn tượng',
+      'Thưởng lãm kỳ quan ruộng bậc thang uốn lượn',
+      'Chinh phục đỉnh Fansipan giữa biển mây',
+      'Sắc màu văn hóa tại các bản làng vùng cao',
+      'Hơi thở phố núi trong những buổi sớm sương mờ',
+      'Trải nghiệm ẩm thực Tây Bắc nồng nàn',
     ],
-    bestTime: 'Tháng 9 – 11 (mùa lúa chín) hoặc 12 – 2 (tuyết rơi)',
+    bestTime: 'Tháng 9 – 11',
     duration: '3–4 ngày',
     featured: true,
+    signatureMoments: [
+      {
+        title: 'Thung lũng thức giấc',
+        description: 'Ngắm nhìn những tia nắng đầu tiên xé toạc màn sương đặc quánh, tiết lộ vẻ đẹp lộng lẫy của thung lũng Mường Hoa.',
+        image: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        title: 'Chạm tay vào mây',
+        description: 'Cảm giác đứng trên đỉnh Fansipan, nơi mây ngàn cuồn cuộn dưới chân và đất trời như thu gọn trong tầm mắt.',
+        image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80'
+      }
+    ],
+    atmosphere: 'Bình yên, Sương mờ',
   },
 
   {
@@ -76,17 +132,18 @@ Sa Pa còn là nơi sinh sống của nhiều dân tộc thiểu số như H'Mô
     rating: 4.7,
     reviewCount: 15600,
     image: 'https://images.unsplash.com/photo-1768059279306-98b49f47be92?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Thủ đô nghìn năm văn hiến với 36 phố phường cổ kính, hồ Hoàn Kiếm và ẩm thực phong phú.',
-    longDescription: `Hà Nội — thủ đô hơn 1.000 năm tuổi của Việt Nam — là sự hòa quyện độc đáo giữa truyền thống và hiện đại. Khu phố cổ 36 phố phường vẫn giữ được nét xưa với những ngôi nhà mái ngói, các cửa hàng thủ công truyền thống và văn hóa ẩm thực đường phố sôi động.
+    description: 'Thủ đô ngàn năm văn hiến, nơi vẻ đẹp hoài cổ của 36 phố phường hòa quyện trong nhịp sống đương đại.',
+    longDescription: `Hà Nội không chỉ là một thành phố, mà là một kho tàng ký ức được lưu giữ qua những mái ngói rêu phong và những con phố nhỏ quanh co. Mỗi góc phố, mỗi hàng cây đều kể lại một câu chuyện về sự bền bỉ và vẻ đẹp thanh lịch của người Tràng An.
 
-Hồ Hoàn Kiếm và Tháp Rùa là biểu tượng của thành phố, gắn liền với truyền thuyết Vua Lê trả gươm thần. Văn Miếu – Quốc Tử Giám, Hoàng thành Thăng Long là những di tích lịch sử không thể bỏ qua.`,
+Dưới bóng cây cổ thụ bên hồ Hoàn Kiếm, thời gian như trôi chậm lại, cho phép ta cảm nhận sâu sắc hơn về chiều dài lịch sử và chiều sâu văn hóa của một vùng đất nghìn năm tuổi.`,
     highlights: [
-      'Phố cổ 36 phố phường lịch sử',
-      'Hồ Hoàn Kiếm và Tháp Rùa',
-      'Văn Miếu – Quốc Tử Giám',
-      'Ẩm thực: Phở, Bún chả, Bánh cuốn',
-      'Múa rối nước truyền thống',
+      'Góc nhìn hoài cổ tại 36 phố phường',
+      'Chiều sâu lịch sử tại Văn Miếu – Quốc Tử Giám',
+      'Sự tĩnh lặng buổi sớm bên hồ Hoàn Kiếm',
+      'Tinh hoa ẩm thực vỉa hè đầy tinh tế',
+      'Nghệ thuật múa rối nước mang hồn dân tộc',
     ],
+    atmosphere: 'Hoài cổ, Thanh lịch',
     bestTime: 'Tháng 9 – 11 và 3 – 4',
     duration: '3–4 ngày',
     featured: false,
@@ -102,17 +159,18 @@ Hồ Hoàn Kiếm và Tháp Rùa là biểu tượng của thành phố, gắn l
     rating: 4.6,
     reviewCount: 7840,
     image: 'https://images.unsplash.com/photo-1768245074264-f439d94ea8c9?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Vịnh Hạ Long trên cạn với núi đá vôi hùng vĩ, sông nước thơ mộng và cố đô Hoa Lư.',
-    longDescription: `Ninh Bình được mệnh danh là "Vịnh Hạ Long trên cạn" nhờ địa hình núi đá vôi độc đáo nằm giữa đồng bằng. Tràng An — quần thể danh thắng được UNESCO công nhận năm 2014 — là điểm nhấn với những hang động kỳ bí và mặt hồ phẳng lặng.
+    description: 'Vịnh Hạ Long trên cạn, nơi những dòng sông uốn lượn chân núi đá vôi tạo nên một cõi tiên cảnh hữu tình.',
+    longDescription: `Ninh Bình là sự kết hợp kỳ diệu giữa sự hùng vĩ của đá và sự mềm mại của nước. Những dòng sông xanh ngắt len lỏi qua lòng hang tối và những cánh đồng lúa vàng óng, tạo nên một quần thể danh thắng Tràng An thoát tục và đầy thơ mộng.
 
-Bái Đính là ngôi chùa lớn nhất Đông Nam Á với hàng trăm pho tượng Phật, thu hút hàng triệu khách hành hương mỗi năm. Cố đô Hoa Lư — kinh đô đầu tiên của Việt Nam thống nhất — là điểm tham quan lịch sử quan trọng.`,
+Tại đây, giữa những di tích cố đô Hoa Lư xưa cũ và sự tĩnh lặng của các ngôi chùa cổ, du khách có thể tìm thấy sự bình yên tuyệt đối và cảm nhận được dòng chảy của lịch sử Việt Nam qua từng dấu tích thời gian.`,
     highlights: [
-      'Chèo thuyền qua hang động Tràng An',
-      'Chùa Bái Đính lớn nhất Đông Nam Á',
-      'Cố đô Hoa Lư lịch sử',
-      'Tam Cốc – Bích Động thơ mộng',
-      'Đạp xe qua đồng lúa xanh mướt',
+      'Chèo thuyền du ngoạn cõi tiên Tràng An',
+      'Vẻ đẹp thoát tục của cố đô Hoa Lư',
+      'Toàn cảnh hùng vĩ từ đỉnh Hang Múa',
+      'Sự tĩnh lặng tại chùa Bái Đính',
+      'Đạp xe giữa đồng lúa Tam Cốc thơ mộng',
     ],
+    atmosphere: 'Thoát tục, Hữu tình',
     bestTime: 'Tháng 10 – 4',
     duration: '2–3 ngày',
     featured: false,
@@ -131,20 +189,30 @@ Bái Đính là ngôi chùa lớn nhất Đông Nam Á với hàng trăm pho tư
     rating: 4.9,
     reviewCount: 18920,
     image: 'https://images.unsplash.com/photo-1761150285206-dcae08659129?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Phố cổ hơn 400 năm tuổi lung linh ánh đèn lồng, được UNESCO công nhận là Di sản Văn hóa Thế giới.',
-    longDescription: `Hội An là một trong những điểm đến được yêu thích nhất Việt Nam và thế giới. Phố cổ Hội An được UNESCO công nhận là Di sản Văn hóa Thế giới năm 1999, bảo tồn gần như nguyên vẹn kiến trúc thương cảng thế kỷ 15–19 với ảnh hưởng của văn hóa Nhật Bản, Trung Hoa và Việt Nam.
+    description: 'Bảo tàng sống của thời gian, nơi những con phố vàng rực rỡ dưới ánh đèn lồng mang vẻ đẹp ngưng đọng.',
+    longDescription: `Hội An là nơi mà mỗi viên gạch, mỗi mái ngói đều mang hơi thở của quá khứ. Kiến trúc thương cảng thế kỷ 17 được bảo tồn gần như nguyên vẹn, tạo nên một không gian sống động mà bình yên, nơi những giá trị văn hóa truyền thống vẫn được giữ gìn qua từng nếp nhà.
 
-Điểm đặc trưng nhất của Hội An là những chiếc đèn lồng muôn màu treo khắp phố phường, đặc biệt rực rỡ vào đêm 14 âm lịch mỗi tháng (Lễ hội Đêm Rằm). Làng rau Trà Quế, làng gốm Thanh Hà và bãi biển An Bàng là những điểm tham quan thêm không thể bỏ qua.`,
+Khi đêm xuống, Hội An trở thành một giấc mơ lung linh với hàng nghìn chiếc đèn lồng soi bóng xuống dòng sông Hoài. Đó là lúc ta cảm nhận được rõ nét nhất vẻ đẹp của sự hoài niệm và nhịp sống chậm rãi đặc trưng của vùng đất miền Trung.`,
     highlights: [
-      'Phố cổ đèn lồng lung linh về đêm',
-      'Chùa Cầu Nhật Bản 400 năm tuổi',
-      'Lễ hội Đêm Rằm đặc sắc',
-      'May đo áo dài, làng nghề truyền thống',
-      'Bãi biển An Bàng trong xanh',
+      'Dấu ấn thời gian trên phố cổ đèn lồng',
+      'Kiến trúc Chùa Cầu biểu tượng',
+      'Sự tĩnh lặng trên dòng sông Hoài đêm rằm',
+      'Tinh hoa may mặc và thủ công bản địa',
+      'Bình minh yên bình trên biển An Bàng',
     ],
     bestTime: 'Tháng 2 – 5',
     duration: '3–5 ngày',
     featured: true,
+    signatureMoments: [
+      {
+        title: 'Đèn lồng trên sông Hoài',
+        description: 'Thả một nhành hoa đăng xuống dòng sông lấp lánh, cảm nhận sự kết nối kỳ diệu giữa hiện tại và những giá trị xưa cũ.'
+      },
+      {
+        title: 'Sương sớm phố Hội',
+        description: 'Dạo bước trên những con phố vàng rực trong buổi sớm mai thanh tịnh, khi tiếng chổi tre khua nhẹ trên nền gạch rêu phong.'
+      }
+    ],
   },
 
   {
@@ -157,17 +225,18 @@ Bái Đính là ngôi chùa lớn nhất Đông Nam Á với hàng trăm pho tư
     rating: 4.7,
     reviewCount: 21000,
     image: 'https://images.unsplash.com/photo-1658121062523-753c248e470e?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Thành phố năng động với bãi biển Mỹ Khê tuyệt đẹp, cầu Rồng phun lửa và Bà Nà Hills huyền bí.',
-    longDescription: `Đà Nẵng là thành phố đáng sống bậc nhất Việt Nam, kết hợp hoàn hảo giữa bãi biển đẳng cấp, văn hóa phong phú và cơ sở hạ tầng hiện đại. Bãi biển Mỹ Khê từng được Forbes bình chọn là một trong 6 bãi biển đẹp nhất hành tinh với bờ cát trắng mịn trải dài 9km.
+    description: 'Thành phố của những nhịp cầu và biển xanh, nơi nhịp sống hiện đại hòa quyện cùng sự khoáng đạt của thiên nhiên.',
+    longDescription: `Đà Nẵng mang vẻ đẹp của một đô thị hiện đại nhưng vẫn giữ được sự kết nối mật thiết với thiên nhiên hùng vĩ. Từ bãi cát trắng mịn của Mỹ Khê đến sự huyền bí của Ngũ Hành Sơn, thành phố này mời gọi ta khám phá sự tự do và năng lượng tươi mới.
 
-Bà Nà Hills là khu du lịch trên đỉnh núi cao 1.500m với kiến trúc Pháp cổ, được kết nối bằng cáp treo một dây dài nhất thế giới. Cầu Rồng phun lửa và phun nước mỗi cuối tuần là điểm check-in không thể bỏ qua.`,
+Sự tráng lệ của Cầu Vàng giữa biển mây và nhịp đập sôi động của những cây cầu bắt qua sông Hàn tạo nên một diện mạo Đà Nẵng đầy khát vọng nhưng vẫn không thiếu những góc nhỏ bình yên bên bán đảo Sơn Trà.`,
     highlights: [
-      'Bãi biển Mỹ Khê top 6 thế giới',
-      'Bà Nà Hills – Cầu Vàng iconic',
-      'Cầu Rồng phun lửa và nước',
-      'Bán đảo Sơn Trà – chùa Linh Ứng',
-      'Ẩm thực: Mì Quảng, Bánh mì Đà Nẵng',
+      'Dạo bước trên Cầu Vàng giữa lưng chừng mây',
+      'Tự do cùng sóng biển Mỹ Khê',
+      'Hơi thở tâm linh tại bán đảo Sơn Trà',
+      'Khám phá hang động Ngũ Hành Sơn kỳ bí',
+      'Cảm hứng từ những nhịp cầu hiện đại',
     ],
+    atmosphere: 'Tự do, Phóng khoáng',
     bestTime: 'Tháng 3 – 8',
     duration: '4–6 ngày',
     featured: true,
@@ -183,17 +252,18 @@ Bà Nà Hills là khu du lịch trên đỉnh núi cao 1.500m với kiến trúc
     rating: 4.6,
     reviewCount: 8750,
     image: 'https://images.unsplash.com/photo-1772333389035-f20faa6bde2b?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Cố đô triều Nguyễn với Đại Nội hùng tráng, lăng tẩm hoàng gia và ẩm thực cung đình tinh tế.',
-    longDescription: `Huế — cố đô của triều đại phong kiến cuối cùng Việt Nam (nhà Nguyễn, 1802–1945) — là một trong những trung tâm văn hóa, lịch sử và ẩm thực quan trọng nhất đất nước. Quần thể Di tích Cố đô Huế được UNESCO công nhận năm 1993.
+    description: 'Cõi mơ của những bậc đế vương xưa, nơi vẻ đẹp trầm mặc của cố đô luôn mang một phong thái tĩnh lặng và kiêu sa.',
+    longDescription: `Huế là nơi nghệ thuật kiến trúc và tâm hồn con người giao thoa trong sự trầm mặc của lịch sử. Từng lăng tẩm hoàng gia và điện đài trong Đại Nội đều tỏa ra một phong thái đế vương, nhưng lại đầy thi vị và u uẩn bên dòng sông Hương thơ mộng.
 
-Đại Nội Huế (Hoàng thành) là kiến trúc cung đình nguy nga với hàng trăm công trình cổ kính. Bên ngoài thành phố là hệ thống 7 lăng tẩm hoàng gia ẩn mình trong rừng thông. Sông Hương thơ mộng chảy qua trung tâm thành phố, là nơi lý tưởng để thưởng thức ca Huế trên thuyền rồng.`,
+Đến với Huế là đến với sự tinh tế trong từng món ăn cung đình, trong tiếng chuông chùa Thiên Mụ vang xa và trong nhịp sống chậm rãi mà trang trọng của một vùng đất đã từng là tâm điểm của một triều đại.`,
     highlights: [
-      'Đại Nội Huế – Hoàng thành triều Nguyễn',
-      'Lăng Minh Mạng, Tự Đức, Khải Định',
-      'Nghe ca Huế trên sông Hương',
-      'Ẩm thực cung đình: Cơm hến, Bún bò Huế',
-      'Thiền viện Trúc Lâm Bạch Mã',
+      'Vẻ đẹp uy nghiêm của Đại Nội triều Nguyễn',
+      'Sự trầm mặc tại các lăng tẩm hoàng gia',
+      'Chiều tà buông trên dòng sông Hương thơ mộng',
+      'Tinh hoa ẩm thực cung đình tinh tế',
+      'Tiếng chuông chùa Thiên Mụ vang giữa hư không',
     ],
+    atmosphere: 'Trầm mặc, Kiêu sa',
     bestTime: 'Tháng 1 – 3 và 7 – 8',
     duration: '2–3 ngày',
     featured: false,
@@ -212,17 +282,18 @@ Bà Nà Hills là khu du lịch trên đỉnh núi cao 1.500m với kiến trúc
     rating: 4.8,
     reviewCount: 16340,
     image: 'https://images.unsplash.com/photo-1693282814784-649be45a459b?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: '"Đảo Ngọc" với bãi biển tuyệt đẹp, nước biển trong vắt và hệ sinh thái rừng nguyên sinh phong phú.',
-    longDescription: `Phú Quốc — hòn đảo lớn nhất Việt Nam — đã trở thành điểm đến hàng đầu của du khách trong và ngoài nước nhờ vẻ đẹp hoang sơ nguyên vẹn và cơ sở hạ tầng du lịch đẳng cấp thế giới. Bãi Sao ở phía Nam đảo thường xuyên được bầu chọn là một trong những bãi biển đẹp nhất châu Á.
+    description: 'Đảo Ngọc thuần khiết giữa vịnh Thái Lan, nơi những bãi cát trắng và làn nước trong vắt tạo nên một thiên đường tĩnh tại.',
+    longDescription: `Phú Quốc mời gọi những tâm hồn tìm kiếm sự ẩn dật trong vẻ đẹp nguyên sơ của biển khơi. Làn nước trong vắt đến tận đáy và những rặng san hô rực rỡ màu sắc tạo nên một thế giới dưới nước huyền ảo, tách biệt hoàn toàn với nhịp sống hối hả ngoài kia.
 
-Phú Quốc có Vườn Quốc gia bao phủ hơn một nửa diện tích đảo với hệ sinh thái rừng nhiệt đới phong phú. Làng chài Dương Đông là nơi tốt nhất để thưởng thức hải sản tươi sống và nước mắm Phú Quốc nổi tiếng.`,
+Dưới tán dừa xanh mướt của Bãi Sao hay trong nhịp sống mộc mạc của các làng chài cổ, Phú Quốc hiện ra như một viên ngọc quý đang chờ được khám phá bằng sự trân trọng và thấu hiểu.`,
     highlights: [
-      'Bãi Sao – bãi biển đẹp nhất Việt Nam',
-      'Lặn ngắm san hô ở Hòn Thơm',
-      'Vinpearl Safari – vườn thú hoang dã',
-      'Câu mực đêm trên biển',
-      'Nước mắm Phú Quốc chính hiệu',
+      'Sự tĩnh lặng trên bờ cát trắng Bãi Sao',
+      'Thế giới san hô rực rỡ dưới lòng đại dương',
+      'Hoàng hôn buông trên biển Tây lộng lẫy',
+      'Hương vị biển cả trong những ngôi làng cổ',
+      'Trải nghiệm nghỉ dưỡng đẳng cấp giữa thiên nhiên',
     ],
+    atmosphere: 'Thuần khiết, Ẩn dật',
     bestTime: 'Tháng 11 – 4 (mùa khô)',
     duration: '4–6 ngày',
     featured: true,
@@ -238,17 +309,18 @@ Phú Quốc có Vườn Quốc gia bao phủ hơn một nửa diện tích đả
     rating: 4.5,
     reviewCount: 24100,
     image: 'https://images.unsplash.com/photo-1748517288431-b67c92632a8e?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: 'Thành phố năng động nhất Việt Nam với lịch sử chiến tranh độc đáo, ẩm thực đa dạng và cuộc sống về đêm sôi động.',
-    longDescription: `TP. Hồ Chí Minh (Sài Gòn) là trung tâm kinh tế, văn hóa và du lịch lớn nhất Việt Nam. Thành phố này mang trong mình dấu ấn lịch sử phức tạp của thời kỳ thuộc địa Pháp và chiến tranh Việt Nam, tạo nên sự hòa trộn độc đáo giữa kiến trúc Đông Dương cổ điển và nhịp sống hiện đại năng động.
+    description: 'Hòn ngọc Viễn Đông sôi động, nơi những dấu ấn kiến trúc Pháp cổ điển đan xen giữa nhịp đập mãnh liệt của đô thị.',
+    longDescription: `TP. Hồ Chí Minh là một bản giao hưởng của sự đối lập: giữa những tòa nhà chọc trời hào nhoáng và những con hẻm nhỏ mang đầy ký ức. Sài Gòn luôn mở lòng đón nhận mọi luồng văn hóa, tạo nên một bản sắc riêng biệt, vừa phóng khoáng vừa đầy tình người.
 
-Địa đạo Củ Chi — hệ thống đường hầm dài 250km dưới lòng đất — là minh chứng cho ý chí kiên cường của người Việt. Bảo tàng Chứng tích Chiến tranh và Dinh Độc Lập là những địa điểm giúp du khách hiểu sâu hơn về lịch sử đất nước.`,
+Sức sống của thành phố nằm ở những quán cà phê vỉa hè buổi sớm, ở những công trình kiến trúc Đông Dương trang nhã và ở nhịp sống không bao giờ ngủ, luôn thôi thúc ta khám phá những góc khuất đầy thú vị.`,
     highlights: [
-      'Địa đạo Củ Chi – huyền thoại lịch sử',
-      'Bảo tàng Chứng tích Chiến tranh',
-      'Dinh Độc Lập, Nhà thờ Đức Bà',
-      'Phố đi bộ Nguyễn Huệ sôi động',
-      'Ẩm thực 24/7: Phở, Hủ tiếu, Bánh mì',
+      'Dấu ấn Đông Dương tại các công trình di sản',
+      'Hơi thở lịch sử từ địa đạo Củ Chi',
+      'Nhịp sống năng động trên phố đi bộ',
+      'Sự đa dạng của thiên đường ẩm thực 24/7',
+      'Toàn cảnh thành phố rực rỡ từ trên cao',
     ],
+    atmosphere: 'Năng động, Đa sắc',
     bestTime: 'Tháng 12 – 4 (mùa khô)',
     duration: '3–5 ngày',
     featured: false,
@@ -264,17 +336,18 @@ Phú Quốc có Vườn Quốc gia bao phủ hơn một nửa diện tích đả
     rating: 4.7,
     reviewCount: 11280,
     image: 'https://images.unsplash.com/photo-1675701231005-53ba4be97f23?auto=format&fit=crop&w=1400&q=80&ixlib=rb-4.1.0',
-    description: '"Thành phố ngàn hoa" lãng mạn với khí hậu mát mẻ quanh năm, thông reo vi vu và kiến trúc Pháp độc đáo.',
-    longDescription: `Đà Lạt — "Thành phố mộng mơ" — nằm trên cao nguyên Lâm Viên ở độ cao 1.500m với khí hậu mát mẻ quanh năm hiếm có ở miền Nam nhiệt đới. Thành phố được người Pháp xây dựng từ đầu thế kỷ 20 như một khu nghỉ dưỡng mùa hè, để lại di sản kiến trúc biệt thự Pháp cổ đặc sắc.
+    description: 'Xứ sở mù sương lãng mạn, nơi thông reo và ngàn hoa khoe sắc tạo nên một giai điệu dịu dàng giữa cao nguyên.',
+    longDescription: `Đà Lạt là một bài thơ được viết giữa cao nguyên Lâm Viên, nơi khí hậu mát mẻ và những làn sương mờ ảo dệt nên một không gian đầy mơ mộng. Những ngôi biệt thự Pháp cổ ẩn hiện trong rừng thông và những hồ nước phẳng lặng tạo nên một khung cảnh thanh bình, lãng mạn đặc trưng.
 
-Đà Lạt nổi tiếng với những vườn hoa rực rỡ (hồng, mimosa, dã quỳ), vườn cà phê và dâu tây. Hồ Xuân Hương, thác Prenn, Dinh Bảo Đại, và Crazy House là những điểm tham quan hấp dẫn. Chợ đêm Đà Lạt là nơi lý tưởng để thưởng thức đặc sản địa phương.`,
+Ở Đà Lạt, mỗi mùa hoa là một cung bậc cảm xúc khác nhau. Sự tĩnh lặng của thành phố ngàn hoa mang lại cho tâm hồn sự thư thái, mời gọi ta chậm lại để cảm nhận hương vị cà phê nồng nàn và vẻ đẹp dịu dàng của nhịp sống cao nguyên.`,
     highlights: [
-      'Hồ Xuân Hương lãng mạn giữa thành phố',
-      'Vườn hoa Đà Lạt muôn sắc',
-      'Thác Prenn, thác Datanla hùng vĩ',
-      'Crazy House – kiến trúc siêu thực',
-      'Cà phê Đà Lạt ngon nức tiếng',
+      'Giai điệu sương mờ bên hồ Xuân Hương',
+      'Vẻ đẹp nên thơ của những triền hoa',
+      'Kiến trúc Pháp cổ điển giữa rừng thông',
+      'Thưởng thức vị cà phê cao nguyên nồng nàn',
+      'Hùng vĩ và thơ mộng của các thác nước',
     ],
+    atmosphere: 'Lãng mạn, Dịu dàng',
     bestTime: 'Quanh năm (mát mẻ), đẹp nhất 11 – 1',
     duration: '3–4 ngày',
     featured: true,
