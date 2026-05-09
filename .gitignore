@@ -20,3 +20,8 @@ pnpm-debug.log*
 # system
 .DS_Store
 Thumbs.db
+
+# AI / local workspace
+.cursor/
+.antigravity/
+.gemini/
