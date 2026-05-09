@@ -67,8 +67,8 @@ export default function Navbar() {
             </span>
             <span
               className={[
-                'hidden sm:inline text-xs tracking-[0.22em] uppercase',
-                isOverlay ? 'text-white/70' : 'text-slate-500',
+                'hidden sm:inline text-[0.6rem] tracking-[0.35em] uppercase font-medium',
+                isOverlay ? 'text-white/40' : 'text-slate-400',
               ].join(' ')}
             >
               Luxury Travel

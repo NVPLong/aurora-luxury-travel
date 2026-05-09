@@ -43,7 +43,6 @@ export default function HeroSection({
   // Parallax rất nhẹ để tránh tốn performance / gây khó chịu.
   const bgY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ['0%', '0%'] : ['0%', '8%'])
   const contentY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ['0%', '0%'] : ['0%', '-4%'])
-
   // Easing "luxury": mềm, chậm đầu, nhanh dần rồi dừng êm.
   const easing = useMemo(() => [0.16, 1, 0.3, 1] as const, [])
 
@@ -54,7 +53,7 @@ export default function HeroSection({
         opacity: 1,
         transition: prefersReducedMotion
           ? { duration: 0.2 }
-          : { duration: 0.6, ease: easing, staggerChildren: 0.08, delayChildren: 0.1 },
+          : { duration: 0.8, ease: easing, staggerChildren: 0.15, delayChildren: 0.2 },
       },
     }),
     [easing, prefersReducedMotion],
@@ -62,8 +61,8 @@ export default function HeroSection({
 
   const itemVariants = useMemo(
     () => ({
-      hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 10, filter: prefersReducedMotion ? 'none' : 'blur(6px)' },
-      show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55, ease: easing } },
+      hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 15, filter: prefersReducedMotion ? 'none' : 'blur(10px)' },
+      show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.2, ease: easing } },
     }),
     [easing, prefersReducedMotion],
   )
@@ -71,22 +70,10 @@ export default function HeroSection({
   return (
     // Layout có pt-16 để chừa chỗ navbar fixed.
     // Hero muốn full viewport nên bù lại bằng -mt-16 và tăng min-height.
-    <section className="relative -mt-16 min-h-[calc(100svh+4rem)] overflow-hidden aurora-grain">
+    <section className="relative -mt-16 min-h-[calc(100svh+4rem)] overflow-hidden bg-slate-950">
 
-      {/* ===== Background image + (optional) video overlay ===== */}
+      {/* ===== Background image + dark cinematic overlays ===== */}
       <motion.div style={{ y: bgY }} className="absolute inset-0">
-        {/* Loading fallback: shimmer overlay cho cảm giác "alive" khi ảnh tải chậm */}
-        <div
-          className={[
-            'absolute inset-0',
-            'bg-[linear-gradient(110deg,rgba(255,255,255,0.06),rgba(255,255,255,0.14),rgba(255,255,255,0.06))]',
-            'bg-[length:200%_100%] animate-shimmer',
-            'transition-opacity duration-300 ease-out',
-            imageReady ? 'opacity-0' : 'opacity-100',
-          ].join(' ')}
-          aria-hidden="true"
-        />
-
         <Image
           src={imageSrc}
           alt="Cinematic luxury landscape"
@@ -94,17 +81,21 @@ export default function HeroSection({
           priority
           sizes="100vw"
           className={[
-            'object-cover',
-            'transition-opacity duration-500 ease-out',
+            'object-cover transition-opacity duration-1000 ease-out',
             imageReady ? 'opacity-100' : 'opacity-0',
           ].join(' ')}
           onLoad={() => setImageReady(true)}
         />
 
-        {/* Overlay gradient để chữ trắng đọc rõ (rgba(10,20,25,0.45)) */}
-        <div className="absolute inset-0 bg-[radial-gradient(1000px_600px_at_50%_20%,rgba(255,255,255,0.10),transparent_55%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,20,25,0.55)] via-[rgba(10,20,25,0.45)] to-[rgba(10,20,25,0.72)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,20,25,0.45)] via-transparent to-[rgba(10,20,25,0.35)]" />
+        {/* Cinematic Scrims: Khôi phục độ sâu và sự tập trung (Image visibility > 70%) */}
+        {/* 1. Phủ tối nhẹ toàn bộ để bảo vệ navbar và text (35-45% black) */}
+        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+        
+        {/* 2. Gradient từ trái sang để bảo vệ vùng text (55-60% black) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" aria-hidden="true" />
+        
+        {/* 3. Vignette chân trang bảo vệ scroll indicator (35-40% black) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true" />
       </motion.div>
 
       {/* ===== Foreground content ===== */}
@@ -115,14 +106,14 @@ export default function HeroSection({
         animate="show"
         className="relative z-10 flex min-h-[calc(100svh+4rem)] items-center pb-32"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full">
-          {/* Asymmetrical Grid: Content occupies the left half with generous whitespace */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full pt-20 lg:pt-28">
+          {/* Asymmetrical Composition: Monumental scale on the left half */}
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 xl:col-span-7">
               
-              <motion.div variants={itemVariants} className="inline-flex items-center gap-4">
-                <span className="h-px w-10 bg-[color:#C8A96A]/60" aria-hidden="true" />
-                <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.4em] uppercase text-white/50 font-medium">
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-5">
+                <span className="h-px w-8 bg-[color:#C8A96A]/40" aria-hidden="true" />
+                <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.5em] uppercase text-white/75 font-medium">
                   {brandName} &nbsp;·&nbsp; Curated Journey
                 </span>
               </motion.div>
@@ -130,39 +121,42 @@ export default function HeroSection({
               <motion.h1
                 variants={itemVariants}
                 className={[
-                  'mt-8 text-[2.8rem] sm:text-5xl lg:text-[5rem] font-medium text-white leading-[1.05]',
+                  'mt-12 text-[3rem] sm:text-6xl lg:text-[6rem] font-medium text-white leading-[1]',
                   'font-serif tracking-[-0.02em]',
                 ].join(' ')}
               >
                 {headline.split(' ').slice(0, -1).join(' ')} <br className="hidden sm:block" />
-                <span className="italic text-white/90">{headline.split(' ').slice(-1)}</span>
+                <span className="italic text-white/90 font-normal">{headline.split(' ').slice(-1)}</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="mt-10 max-w-[32rem] text-base sm:text-[1.05rem] leading-[1.9] text-white/60 font-light"
+                className="mt-10 max-w-[32rem] text-base sm:text-lg leading-[1.8] text-white/80 font-light"
               >
                 {subtitle}
               </motion.p>
 
-              <motion.div variants={itemVariants} className="mt-16 flex flex-col sm:flex-row items-center gap-10">
+              <motion.div variants={itemVariants} className="mt-14 flex flex-col sm:flex-row items-center gap-6">
+                {/* Primary CTA: Solid Luxury Style */}
                 <Link
                   href={primaryCtaHref}
                   className={[
-                    'group relative inline-flex items-center gap-4 text-white text-sm font-medium tracking-[0.2em] uppercase transition-all duration-500',
+                    'inline-flex items-center justify-center rounded-2xl px-10 py-4',
+                    'bg-[color:#C8A96A] text-white text-base font-medium tracking-wide',
+                    'transition-all duration-300 ease-out hover:bg-[color:#A87F3F] hover:-translate-y-1',
+                    'shadow-[0_20px_50px_rgba(200,169,106,0.2)]'
                   ].join(' ')}
                 >
-                  <span className="relative z-10">{primaryCtaLabel}</span>
-                  <div className="w-12 h-px bg-white/20 transition-all duration-500 group-hover:w-16 group-hover:bg-[color:#C8A96A]" />
-                  {/* Subtle hover reveal mark */}
-                  <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-[color:#C8A96A] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  {primaryCtaLabel}
                 </Link>
 
                 <Link
                   href="/about"
                   className={[
-                    'text-white/40 hover:text-white/70 text-[0.7rem] font-medium tracking-[0.25em] uppercase transition-all duration-500',
-                    'border-b border-white/10 pb-1 hover:border-white/30'
+                    'inline-flex items-center justify-center rounded-2xl px-10 py-4',
+                    'bg-white/5 text-white text-base font-medium tracking-wide',
+                    'border border-white/20 backdrop-blur-sm',
+                    'transition-all duration-300 ease-out hover:bg-white/10 hover:-translate-y-1'
                   ].join(' ')}
                 >
                   Our Vision
@@ -173,28 +167,28 @@ export default function HeroSection({
         </div>
       </motion.div>
 
-      {/* Elegant Scroll Indicator (Moved to bottom-right for asymmetry) */}
-      <div className="absolute bottom-12 right-8 lg:right-16 z-10 flex flex-col items-center gap-6">
+      {/* Cinematic Scroll Indicator (Repositioned for dramatic asymmetry) */}
+      <div className="absolute bottom-16 right-8 lg:right-20 z-10 flex flex-col items-center gap-8">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 1.5 }}
-          className="flex flex-col items-center gap-6"
+          transition={{ delay: 1.8, duration: 2 }}
+          className="flex flex-col items-center gap-8"
         >
-          <span className="text-[0.55rem] tracking-[0.5em] uppercase text-white/30 font-light [writing-mode:vertical-lr] rotate-180">
+          <span className="text-[0.6rem] tracking-[0.5em] uppercase text-white/50 font-light [writing-mode:vertical-lr] rotate-180">
             Scroll
           </span>
-          <div className="relative h-20 w-px bg-white/5 overflow-hidden">
+          <div className="relative h-20 w-px bg-white/20 overflow-hidden">
             <motion.div 
               initial={{ y: "-100%" }}
               animate={{ y: "100%" }}
               transition={{ 
-                duration: 3, 
+                duration: 3.5, 
                 repeat: Infinity, 
                 ease: [0.4, 0, 0.2, 1],
-                delay: 2
+                delay: 2.5
               }}
-              className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-transparent via-white/20 to-transparent"
+              className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
             />
           </div>
         </motion.div>
