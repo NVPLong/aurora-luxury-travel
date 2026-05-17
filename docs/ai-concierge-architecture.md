@@ -15,8 +15,9 @@ The concierge is not a generic "help desk." It is a **Curated Guide**. Its perso
 ### Phase 2: RAG & LLM Integration (Planned)
 - **Model**: Google Gemini 1.5 Pro (preferred for cinematic/long-context reasoning).
 - **Architecture**: **RAG (Retrieval-Augmented Generation)**.
-- **Knowledge Base**: Vectorized versions of `data/destinations.ts` and editorial blogs.
+- **Knowledge Base**: Vectorized versions of `content/destinations.ts` and editorial blogs.
 - **Vector DB**: Pinecone or Supabase Vector (pgvector).
+- **Agent Discipline**: Follow `.skills/aurora-concierge-rag/SKILL.md` for tools, guardrails, and evals.
 
 ### Phase 3: Personalization
 - **Context Awareness**: Remembers user preferences during the session.
@@ -40,3 +41,4 @@ The concierge is not a generic "help desk." It is a **Curated Guide**. Its perso
 - **Token Efficiency**: Use prompt caching for system instructions.
 - **Latency**: Implement streaming responses to maintain the "cinematic" feel.
 - **Privacy**: No PII should be sent to the LLM.
+- **VoltAgent Fit**: Introduce VoltAgent only when the Concierge needs typed tools, durable memory, RAG orchestration, guardrails, evals, or trace observability. Do not add it for the current mock-only drawer.

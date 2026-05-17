@@ -89,19 +89,19 @@ export function sortDestinations(
   // Tạo bản sao để không thay đổi mảng gốc
   return [...destinations].sort((a, b) => {
     switch (sort) {
-      // Sắp xếp theo rating giảm dần (cao nhất lên đầu)
+      // Sort by rating descending (highest first)
       case 'rating':
         return b.rating - a.rating
 
-      // Sắp xếp theo tên A→Z
+      // Sort by name A→Z
       case 'name-asc':
-        return a.name.localeCompare(b.name, 'vi')
+        return a.name.localeCompare(b.name, 'en')
 
-      // Sắp xếp theo tên Z→A
+      // Sort by name Z→A
       case 'name-desc':
-        return b.name.localeCompare(a.name, 'vi')
+        return b.name.localeCompare(a.name, 'en')
 
-      // Mặc định: giữ nguyên thứ tự
+      // Default: preserve order
       default:
         return 0
     }

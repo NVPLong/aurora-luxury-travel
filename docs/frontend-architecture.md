@@ -23,7 +23,11 @@ The design system is codified in `SKILLS.md` and `tailwind.config.js`.
 ### Layout Strategy
 - `app/layout.tsx`: Global wrapper containing `Navbar`, `Footer`, and the `AuroraAssistantButton`.
 - `components/layout/`: Shared structural components.
-- `components/ui/`: Atomic, reusable design elements (Cards, Buttons, Inputs).
+- `components/home/`: Homepage-only editorial sections.
+- `components/layout/`: Global shell elements such as navigation and footer.
+- `components/motion/`: Shared Framer Motion primitives used across pages.
+- `features/destinations/components/`: Destination listing, detail, filter, and discovery UI.
+- `content/`: Curated editorial content that is still static in V1.
 
 ### Interaction Patterns
 - **Server Components (Default)**: Used for all static content and initial page loads to optimize LCP.
@@ -45,8 +49,9 @@ Animations must be **restrained**.
 - **Bundle Size**: Avoid heavy 3rd-party libraries. Stick to `framer-motion` for all movement.
 
 ## 6. Development Workflow
-1. Define types in `types/`.
-2. Mock data in `data/` (temporary).
-3. Build components in `components/ui/`.
-4. Implement page logic in `app/`.
-5. Audit for "Quiet Luxury" aesthetics.
+1. Define shared types in `types/`.
+2. Keep curated static content in `content/` until the database migration.
+3. Build route-specific UI in `features/<domain>/components/`.
+4. Keep generic motion/layout primitives in `components/`.
+5. Implement page orchestration in `app/`.
+6. Audit for "Quiet Luxury" aesthetics.

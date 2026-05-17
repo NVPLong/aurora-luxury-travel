@@ -10,19 +10,19 @@
 // ----------------------------------------------------------------
 
 /** Miền địa lý của địa điểm */
-export type Region = 'Bắc' | 'Trung' | 'Nam'
+export type Region = 'North' | 'Central' | 'South'
 
 /** Loại hình du lịch */
 export type Category =
-  | 'Biển'
-  | 'Núi'
-  | 'Phố cổ'
-  | 'Di tích'
-  | 'Thiên nhiên'
-  | 'Đảo'
+  | 'Seaside'
+  | 'Mountain'
+  | 'Heritage'
+  | 'Historical'
+  | 'Nature'
+  | 'Island'
 
 /** Mức ngân sách ước tính cho chuyến đi */
-export type Budget = 'Thấp' | 'Trung bình' | 'Cao'
+export type Budget = 'Value' | 'Mid-range' | 'Luxury'
 
 /** Tiêu chí sắp xếp danh sách */
 export type SortOption = 'rating' | 'name-asc' | 'name-desc'
@@ -42,7 +42,8 @@ export interface Destination {
   budget: Budget          // Ngân sách: "Thấp" | "Trung bình" | "Cao"
   rating: number          // Điểm đánh giá từ 1.0 đến 5.0
   reviewCount: number     // Số lượt đánh giá
-  image: string           // URL ảnh chính (từ Unsplash)
+  image: string           // URL anh chinh cua dia diem
+  imageAlt?: string       // Mo ta anh dung cho accessibility va SEO
   description: string     // Mô tả ngắn (1-2 câu, hiển thị trên card)
   longDescription: string // Mô tả chi tiết (hiển thị trang chi tiết)
   highlights: string[]    // Danh sách điểm nổi bật
@@ -61,6 +62,26 @@ export interface Destination {
     activity: string
     image?: string
   }[]
+  gallery?: {
+    title: string
+    caption: string
+    image: string
+    imageAlt?: string
+  }[]
+  sampleItinerary?: {
+    day: string
+    title: string
+    description: string
+    stops: string[]
+  }[]
+  travelNotes?: {
+    label: string
+    value: string
+  }[]
+  mapNote?: {
+    title: string
+    description: string
+  }
   atmosphere?: string     // [NEW] Không khí/Cảm xúc chủ đạo (VD: "Tĩnh lặng, Huyền bí")
 }
 

@@ -44,7 +44,7 @@ Aurora is currently a static frontend project. This roadmap outlines the transit
 # Technical Debt & Constraints
 
 ## 1. Current Debt
-- **Mock Data**: `data/destinations.ts` is hardcoded. Needs migration to a DB.
+- **Mock Data**: `content/destinations.ts` is hardcoded. Needs migration to a DB.
 - **Wording**: Some legacy "VietTravel" or purely "Vietnam" focused strings may remain in comments or metadata.
 - **Animation Performance**: Heavy use of `framer-motion` on many elements can impact low-end mobile devices.
 

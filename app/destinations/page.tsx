@@ -7,15 +7,15 @@
 // =============================================================
 'use client'
 
-import { useState } from 'react'
-import type { FilterState } from '@/types'
-import { DEFAULT_FILTER } from '@/constants/filters'
-import { destinations } from '@/data/destinations'
+import { useEffect, useState } from 'react'
+import type { FilterState, Region } from '@/types'
+import { DEFAULT_FILTER, REGIONS } from '@/constants/filters'
+import { destinations } from '@/content/destinations'
 import { applyFilters } from '@/lib/utils'
-import SearchBar from '@/components/ui/SearchBar'
-import FilterPanel from '@/components/ui/FilterPanel'
-import DestinationCard from '@/components/ui/DestinationCard'
-import EmptyState from '@/components/ui/EmptyState'
+import SearchBar from '@/features/destinations/components/SearchBar'
+import FilterPanel from '@/features/destinations/components/FilterPanel'
+import DestinationCard from '@/features/destinations/components/DestinationCard'
+import EmptyState from '@/features/destinations/components/EmptyState'
 import { Compass } from 'lucide-react'
 
 export default function DestinationsPage() {
@@ -25,6 +25,23 @@ export default function DestinationsPage() {
   // Khi filters thay đổi → React tự động render lại danh sách
   // ----------------------------------------------------------------
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTER)
+
+  useEffect(() => {
+    // Dong bo query tu Home/footer vao state filter sau khi trang destinations mount.
+    const params = new URLSearchParams(window.location.search)
+    const searchQuery = params.get('search')
+    const regionQuery = params.get('region')
+
+    if (searchQuery || regionQuery) {
+      setFilters((prev) => ({
+        ...prev,
+        search: searchQuery ?? prev.search,
+        region: REGIONS.includes(regionQuery as Region)
+          ? (regionQuery as Region)
+          : prev.region,
+      }))
+    }
+  }, [])
 
   // ----------------------------------------------------------------
   // Hàm cập nhật filter – nhận vào object chứa các field cần thay đổi

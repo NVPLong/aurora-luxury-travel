@@ -1,5 +1,5 @@
 // =============================================================
-// components/ui/EmptyState.tsx
+// features/destinations/components/EmptyState.tsx
 // Hiển thị khi không tìm thấy kết quả nào sau khi search/filter.
 // =============================================================
 

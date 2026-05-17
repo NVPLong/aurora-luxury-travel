@@ -12,7 +12,7 @@ import {
   Globe2,
   type LucideIcon,
 } from 'lucide-react'
-import SectionReveal from '@/components/ui/SectionReveal'
+import SectionReveal from '@/components/motion/SectionReveal'
 
 // Định nghĩa kiểu dữ liệu cho mỗi feature card
 interface Feature {
@@ -56,7 +56,7 @@ const FEATURES: Feature[] = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 lg:py-24 px-4 aurora-section-bg overflow-hidden">
+    <section className="py-32 lg:py-48 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

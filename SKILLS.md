@@ -24,6 +24,7 @@ The experience must feel:
 * modern minimal
 * emotionally immersive
 * premium but restrained
+* **English-First**: All editorial copy and UI must be in polished English to maintain global luxury standards.
 
 Avoid:
 
@@ -526,6 +527,24 @@ Avoid:
 * giant components
 * duplicated styling
 * overengineering
+
+---
+
+## Local Agent Skills
+
+Aurora uses project-local skills in `.skills/` to keep AI agent behavior consistent.
+
+Read `.skills/README.md` for the skill map.
+
+For non-trivial work:
+
+1. Read `.skills/agent-quality/SKILL.md`.
+2. Read the task-specific skill:
+   * `.skills/aurora-image-audit/SKILL.md` for media and destination imagery.
+   * `.skills/aurora-refactor-safety/SKILL.md` for structure, naming, file moves, and imports.
+   * `.skills/aurora-database-design/SKILL.md` for PostgreSQL, Prisma, entity design, and data migration.
+   * `.skills/aurora-concierge-rag/SKILL.md` for AI Concierge, RAG, guardrails, evals, and future VoltAgent integration.
+3. Record meaningful changes in `.cursor/context/aurora-progress.md`.
 
 ---
 

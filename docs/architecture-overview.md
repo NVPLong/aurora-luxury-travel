@@ -13,6 +13,7 @@ Aurora is a **design-first editorial travel platform**. Unlike marketplaces, its
 | **Intelligence** | Quiet Concierge | Gemini/OpenAI (Planned), RAG, Vector Search |
 | **Data** | Editorial Quality | Current: Mock JSON; Future: PostgreSQL + Prisma |
 | **Media** | Cinematic Clarity | next/image, Cloudinary (Planned) |
+| **Agent Skills** | Consistent AI Collaboration | `.skills/` local operating rules |
 
 ## 3. Structural Layers
 
@@ -36,10 +37,13 @@ Aurora is a **design-first editorial travel platform**. Unlike marketplaces, its
 - **API-First**: Frontend should remain decoupled from data sources.
 - **Modular Components**: Avoid giant page files; extract logic into domain-specific components.
 - **Beginner-Accessible**: Code must remain readable and maintainable for junior engineers.
+- **Skill-Guided Agents**: Use `.skills/agent-quality` plus the relevant Aurora domain skill before non-trivial edits.
 
 ## 5. Documentation Map
 For detailed specifics, refer to:
 - [Frontend Architecture](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/docs/frontend-architecture.md)
 - [AI Concierge Strategy](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/docs/ai-concierge-architecture.md)
 - [Backend & Database Roadmap](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/docs/backend-roadmap.md)
+- [Aurora Development Roadmap](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/docs/aurora-development-roadmap.md)
 - [Technical Debt & Constraints](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/docs/technical-debt.md)
+- [Local Skill Map](file:///e:/My_Antigravity/Long-Antigravity/Web_Travel/.skills/README.md)

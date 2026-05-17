@@ -1,5 +1,5 @@
 // =============================================================
-// components/ui/FilterPanel.tsx
+// features/destinations/components/FilterPanel.tsx
 // Bộ lọc địa điểm theo Miền / Loại hình / Ngân sách.
 // 'use client' vì xử lý tương tác bấm nút của user.
 // =============================================================

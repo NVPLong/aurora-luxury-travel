@@ -1,45 +1,35 @@
-// =============================================================
-// components/layout/Footer.tsx
-// Footer hiển thị ở cuối mọi trang.
-// Server Component (không có 'use client') – chỉ render HTML tĩnh.
-// =============================================================
-
 import Link from 'next/link'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[color:#F8FAF7] border-t border-slate-200/70 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
-
-          {/* Cột 1: Brand */}
+    <footer className="mt-auto border-t border-slate-200/70 bg-[#F8FAF7]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-8">
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="mb-4 flex items-center gap-2">
               <span className="text-xl font-semibold text-slate-900">Aurora</span>
-              <span className="hidden sm:inline text-xs tracking-[0.22em] uppercase text-slate-500">Luxury Travel</span>
+              <span className="hidden text-xs uppercase tracking-[0.22em] text-slate-500 sm:inline">
+                Luxury Travel
+              </span>
             </Link>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
+            <p className="max-w-sm text-sm leading-relaxed text-slate-600">
               Curated journeys across rare landscapes, quiet escapes, and unforgettable stays.
             </p>
           </div>
 
-          {/* Cột 2: Liên kết nhanh */}
           <div>
-            <h3 className="text-slate-900 font-semibold mb-5 tracking-wide">Explore</h3>
+            <h3 className="mb-5 font-semibold tracking-wide text-slate-900">Explore</h3>
             <ul className="space-y-3">
               {[
                 { href: '/destinations', label: 'All Destinations' },
-                { href: '/destinations?region=Bắc',   label: 'Northern' },
-                { href: '/destinations?region=Trung',  label: 'Central' },
-                { href: '/destinations?region=Nam',    label: 'Southern' },
+                { href: '/destinations?region=North', label: 'Northern' },
+                { href: '/destinations?region=Central', label: 'Central' },
+                { href: '/destinations?region=South', label: 'Southern' },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-600 hover:text-slate-900 text-sm transition-colors"
-                  >
+                  <Link href={link.href} className="text-sm text-slate-600 transition-colors hover:text-slate-900">
                     {link.label}
                   </Link>
                 </li>
@@ -47,37 +37,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Cột 3: Về chúng tôi */}
           <div>
-            <h3 className="text-slate-900 font-semibold mb-5 tracking-wide">About Aurora</h3>
+            <h3 className="mb-5 font-semibold tracking-wide text-slate-900">About Aurora</h3>
             <ul className="space-y-3">
               {[
                 { href: '/about', label: 'Our Vision' },
                 { href: '/about#roadmap', label: 'AI Roadmap' },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-600 hover:text-slate-900 text-sm transition-colors"
-                  >
+                  <Link href={link.href} className="text-sm text-slate-600 transition-colors hover:text-slate-900">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            {/* Badge version */}
-            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-white/60 border border-slate-200/70 rounded-full">
-              <span className="w-2 h-2 bg-[color:#C8A96A] rounded-full" />
-              <span className="text-slate-700 text-xs font-medium">Version 1.0 – AI Coming Soon</span>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/60 px-3 py-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#C8A96A]" />
+              <span className="text-xs font-medium text-slate-700">Version 1.0 - AI Coming Soon</span>
             </div>
           </div>
         </div>
 
-        {/* Divider + Copyright */}
-        <div className="mt-16 pt-8 border-t border-slate-200/70 text-center">
-          <p className="text-slate-500 text-sm">
-            © {currentYear} Aurora. Designed for quiet journeys.
+        <div className="mt-16 border-t border-slate-200/70 pt-8 text-center">
+          <p className="text-sm text-slate-500">
+            &copy; {currentYear} Aurora. Designed for quiet journeys.
           </p>
         </div>
       </div>

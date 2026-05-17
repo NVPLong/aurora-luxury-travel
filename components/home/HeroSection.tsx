@@ -1,7 +1,7 @@
 'use client'
 
 // =============================================================
-// components/ui/HeroSection.tsx
+// components/home/HeroSection.tsx
 // Hero cinematic luxury (Aman + The Brando) cho Aurora.
 // Lưu ý: Navbar là global (app/layout.tsx), hero chỉ lo phần visual + copy.
 // =============================================================
@@ -53,7 +53,7 @@ export default function HeroSection({
         opacity: 1,
         transition: prefersReducedMotion
           ? { duration: 0.2 }
-          : { duration: 0.8, ease: easing, staggerChildren: 0.15, delayChildren: 0.2 },
+          : { duration: 1.0, ease: easing, staggerChildren: 0.25, delayChildren: 0.4 },
       },
     }),
     [easing, prefersReducedMotion],
@@ -62,7 +62,7 @@ export default function HeroSection({
   const itemVariants = useMemo(
     () => ({
       hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 15, filter: prefersReducedMotion ? 'none' : 'blur(10px)' },
-      show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.2, ease: easing } },
+      show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.6, ease: easing } },
     }),
     [easing, prefersReducedMotion],
   )
@@ -74,18 +74,24 @@ export default function HeroSection({
 
       {/* ===== Background image + dark cinematic overlays ===== */}
       <motion.div style={{ y: bgY }} className="absolute inset-0">
-        <Image
-          src={imageSrc}
-          alt="Cinematic luxury landscape"
-          fill
-          priority
-          sizes="100vw"
-          className={[
-            'object-cover transition-opacity duration-1000 ease-out',
-            imageReady ? 'opacity-100' : 'opacity-0',
-          ].join(' ')}
-          onLoad={() => setImageReady(true)}
-        />
+        <motion.div 
+          animate={{ scale: [1.0, 1.04] }}
+          transition={{ duration: 25, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={imageSrc}
+            alt="Cinematic luxury landscape"
+            fill
+            priority
+            sizes="100vw"
+            className={[
+              'object-cover transition-opacity duration-1000 ease-out',
+              imageReady ? 'opacity-100' : 'opacity-0',
+            ].join(' ')}
+            onLoad={() => setImageReady(true)}
+          />
+        </motion.div>
 
         {/* Cinematic Scrims: Khôi phục độ sâu và sự tập trung (Image visibility > 70%) */}
         {/* 1. Phủ tối nhẹ toàn bộ để bảo vệ navbar và text (35-45% black) */}
@@ -153,10 +159,10 @@ export default function HeroSection({
                 <Link
                   href="/about"
                   className={[
-                    'inline-flex items-center justify-center rounded-2xl px-10 py-4',
-                    'bg-white/5 text-white text-base font-medium tracking-wide',
-                    'border border-white/20 backdrop-blur-sm',
-                    'transition-all duration-300 ease-out hover:bg-white/10 hover:-translate-y-1'
+                    'inline-flex items-center justify-center px-1 py-1 mt-2 sm:mt-0',
+                    'bg-transparent text-white/90 text-[0.8rem] uppercase tracking-[0.15em] font-medium',
+                    'border-b border-white/30 rounded-none',
+                    'transition-all duration-500 ease-out hover:border-white hover:text-white'
                   ].join(' ')}
                 >
                   Our Vision

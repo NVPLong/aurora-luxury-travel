@@ -1,5 +1,5 @@
 // =============================================================
-// components/ui/SearchBar.tsx
+// features/destinations/components/SearchBar.tsx
 // Thanh tìm kiếm + dropdown sắp xếp.
 // 'use client' vì xử lý sự kiện input từ user.
 // =============================================================

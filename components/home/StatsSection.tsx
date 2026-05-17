@@ -4,7 +4,7 @@
 // Thêm điểm nhấn trực quan giữa các section khác.
 // =============================================================
 import { Compass, Mountain, Plane, ShieldCheck, type LucideIcon } from 'lucide-react'
-import SectionReveal from '@/components/ui/SectionReveal'
+import SectionReveal from '@/components/motion/SectionReveal'
 
 // Dữ liệu thống kê
 const STATS = [
@@ -16,7 +16,7 @@ const STATS = [
 
 export default function StatsSection() {
   return (
-    <section className="py-20 lg:py-24 px-4 aurora-section-bg">
+    <section className="py-32 lg:py-40 px-4">
       <div className="max-w-5xl mx-auto">
         <SectionReveal staggerChildren className="aurora-surface p-10 lg:p-14">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14">

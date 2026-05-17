@@ -1,19 +1,19 @@
 // =============================================================
 // components/home/FeaturedDestinations.tsx
-// Section hiển thị các địa điểm nổi bật trên trang chủ.
-// Server Component – không cần 'use client' vì không có state.
+// Section displaying featured destinations on the homepage.
+// Server Component – no client-side state needed.
 // =============================================================
 
 import Link from 'next/link'
-import DestinationCard from '@/components/ui/DestinationCard'
-import SectionReveal from '@/components/ui/SectionReveal'
-import { getFeaturedDestinations } from '@/data/destinations'
+import DestinationCard from '@/features/destinations/components/DestinationCard'
+import SectionReveal from '@/components/motion/SectionReveal'
+import { getFeaturedDestinations } from '@/content/destinations'
 
 export default function FeaturedDestinations() {
   const featuredList = getFeaturedDestinations()
 
   return (
-    <section className="py-20 px-4 aurora-section-bg overflow-hidden">
+    <section className="py-32 lg:py-40 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* === Header section === */}
@@ -40,13 +40,12 @@ export default function FeaturedDestinations() {
         </SectionReveal>
 
         {/* Nút xem tất cả */}
-        <SectionReveal delay={0.4} className="mt-16 text-center">
+        <SectionReveal delay={0.4} className="mt-24 text-center">
           <Link
             href="/destinations"
-            className="inline-flex items-center gap-3 px-10 py-4 aurora-surface-subtle
-                       text-slate-700 hover:text-slate-900 font-medium text-sm tracking-wide
-                       transition-all duration-500 ease-out hover:-translate-y-1
-                       border border-white/40 group"
+            className="inline-flex items-center gap-4 px-2 py-2
+                       text-slate-500 hover:text-slate-900 text-[0.75rem] uppercase tracking-[0.2em] font-medium
+                       transition-all duration-500 ease-out group"
           >
             Explore the Collection
             <span className="group-hover:translate-x-1 transition-transform duration-500 ease-out">→</span>
